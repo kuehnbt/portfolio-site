@@ -7,14 +7,37 @@
   </div>
   
   <div class="items">
-    {{ range .Pages }}
+    {{ range .RegularPages }}
     <article class="list-item">
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-      <time>{{ .Date.Format "January 2, 2006" }}</time>
-      <p>{{ .Summary }}</p>
-      <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      {{ if .Params.summary }}
+      <p class="summary">{{ .Params.summary }}</p>
+      {{ else }}
+      <p class="summary">{{ .Summary | truncate 160 }}</p>
+      {{ end }}
+      <a href="{{ .RelPermalink }}" class="read-more">Read more →</a>
     </article>
+    {{ end }}
+    
+    {{ if not .RegularPages }}
+    <p class="no-posts">No posts yet. Check back soon!</p>
     {{ end }}
   </div>
 </div>
+
+<style>
+.no-posts {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: var(--space-2xl) 0;
+  font-style: italic;
+}
+
+.summary {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: var(--space-sm) 0;
+}
+</style>
 {{ end }}

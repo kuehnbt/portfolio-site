@@ -1,0 +1,67 @@
+{{ define "main" }}
+<div class="projects-page">
+  <h1>{{ .Title }}</h1>
+  
+  <div class="content">
+    {{ .Content }}
+  </div>
+  
+  <div class="project-grid">
+    {{ range .RegularPages }}
+    <a href="{{ .RelPermalink }}" class="project-card">
+      <div class="project-content">
+        <h3>{{ .Title }}</h3>
+        {{ if .Params.summary }}
+        <p>{{ .Params.summary }}</p>
+        {{ else }}
+        <p>{{ .Summary | truncate 150 }}</p>
+        {{ end }}
+        <div class="project-meta">
+          <time>{{ .Date.Format "January 2006" }}</time>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</div>
+
+<style>
+.projects-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
+}
+
+.projects-page h1 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-md);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+}
+
+.project-meta .arrow {
+  color: var(--accent-primary);
+  font-size: 1.2rem;
+  transition: var(--transition-base);
+}
+
+.project-card:hover .arrow {
+  transform: translateX(4px);
+}
+</style>
+{{ end }}
