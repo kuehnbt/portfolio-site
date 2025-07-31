@@ -1,4 +1,4 @@
-baseURL: "https://YOUR-USERNAME.github.io/portfolio-site/"
+baseURL: "https://kuehnbt.github.io/portfolio-site/"
 languageCode: "en-us"
 title: "DevOps to Game Backend Engineer"
 theme: "gamedev-portfolio"
@@ -11,7 +11,7 @@ params:
   # Social links
   social:
     - name: "GitHub"
-      url: "https://github.com/YOUR-USERNAME"
+      url: "https://github.com/kuehnbt"
     - name: "LinkedIn"
       url: "https://linkedin.com/in/YOUR-USERNAME"
     - name: "Email"
