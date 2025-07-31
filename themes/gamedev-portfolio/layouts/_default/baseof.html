@@ -7,7 +7,7 @@
     <meta name="author" content="{{ .Site.Params.author }}">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Params.author }} - {{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Params.author }}{{ end }}">
     <meta property="og:description" content="{{ .Site.Params.description }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
@@ -23,35 +23,37 @@
         <div class="loading-spinner"></div>
     </div>
     
+    {{ if not .IsHome }}
     <header>
         <nav>
-            <a href="/" class="logo">BK</a>
+            <a href="/" class="logo">{{ .Site.Params.author }}</a>
             <ul>
                 {{ range .Site.Menus.main }}
-                <li><a href="{{ .URL }}" class="nav-link">{{ .Name }}</a></li>
+                {{ if ne .Name "Home" }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{ end }}
                 {{ end }}
             </ul>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                <span class="theme-icon">🌙</span>
-            </button>
         </nav>
     </header>
+    {{ end }}
     
     <main>
         {{ block "main" . }}{{ end }}
     </main>
     
+    {{ if not .IsHome }}
     <footer>
         <div class="container">
             <div class="social-links">
                 {{ range .Site.Params.social }}
-                <a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">{{ .name }}</a>
+                <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
                 {{ end }}
             </div>
-            <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. Built with <span style="color: var(--accent-primary);">❤️</span> and Hugo.</p>
-            <p class="easter-egg-hint">Try the Konami Code 👾</p>
+            <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. All rights reserved.</p>
         </div>
     </footer>
+    {{ end }}
     
     <script>
     // Loading animation
@@ -60,251 +62,31 @@
             document.getElementById('loading').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
+                document.body.classList.add('loaded');
             }, 300);
-        }, 500);
+        }, 300);
     });
     
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    let isEnterpriseMode = false;
+    // Add subtle animations on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
     
-    themeToggle.addEventListener('click', () => {
-        isEnterpriseMode = !isEnterpriseMode;
-        if (isEnterpriseMode) {
-            body.classList.add('enterprise-mode');
-            themeToggle.querySelector('.theme-icon').textContent = '🏢';
-        } else {
-            body.classList.remove('enterprise-mode');
-            themeToggle.querySelector('.theme-icon').textContent = '🌙';
-        }
-    });
-    
-    // Konami Code Easter Egg
-    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let konamiIndex = 0;
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
-                activateEasterEgg();
-                konamiIndex = 0;
-            }
-        } else {
-            konamiIndex = 0;
-        }
-    });
-    
-    function activateEasterEgg() {
-        const terminal = document.createElement('div');
-        terminal.className = 'terminal-easter-egg';
-        terminal.innerHTML = `
-            <div class="terminal-header">
-                <span>terminal@portfolio:~$</span>
-                <button class="terminal-close">×</button>
-            </div>
-            <div class="terminal-body">
-                <p class="terminal-text">
-                    <span class="terminal-prompt">&gt;</span> Welcome to the secret terminal!<br>
-                    <span class="terminal-prompt">&gt;</span> You found the easter egg! 🎮<br>
-                    <span class="terminal-prompt">&gt;</span> Fun fact: I'm a huge fan of retro games.<br>
-                    <span class="terminal-prompt">&gt;</span> My first game was on a Commodore 64!<br>
-                    <span class="terminal-prompt">&gt;</span> Type 'help' for available commands...<br>
-                </p>
-                <input type="text" class="terminal-input" placeholder="Enter command...">
-            </div>
-        `;
-        document.body.appendChild(terminal);
-        
-        const closeBtn = terminal.querySelector('.terminal-close');
-        closeBtn.addEventListener('click', () => {
-            terminal.remove();
-        });
-        
-        const input = terminal.querySelector('.terminal-input');
-        input.focus();
-        
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const command = input.value.toLowerCase();
-                const output = terminal.querySelector('.terminal-text');
-                
-                output.innerHTML += `<span class="terminal-prompt">&gt;</span> ${input.value}<br>`;
-                
-                switch(command) {
-                    case 'help':
-                        output.innerHTML += `Available commands: about, skills, games, clear, exit<br>`;
-                        break;
-                    case 'about':
-                        output.innerHTML += `DevOps engineer by day, aspiring game dev by night!<br>`;
-                        break;
-                    case 'skills':
-                        output.innerHTML += `Kubernetes, Docker, Go, Python, and learning Godot!<br>`;
-                        break;
-                    case 'games':
-                        output.innerHTML += `Currently playing: Hades II, Baldur's Gate 3<br>`;
-                        break;
-                    case 'clear':
-                        output.innerHTML = '';
-                        break;
-                    case 'exit':
-                        terminal.remove();
-                        break;
-                    default:
-                        output.innerHTML += `Command not found: ${command}<br>`;
-                }
-                
-                input.value = '';
-                terminal.querySelector('.terminal-body').scrollTop = terminal.querySelector('.terminal-body').scrollHeight;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
             }
         });
-    }
+    }, observerOptions);
     
-    // Navbar scroll effect
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll <= 0) {
-            header.classList.remove('scroll-up');
-            return;
-        }
-        
-        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
-            header.classList.remove('scroll-up');
-            header.classList.add('scroll-down');
-        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
-            header.classList.remove('scroll-down');
-            header.classList.add('scroll-up');
-        }
-        
-        lastScroll = currentScroll;
+    // Observe all content elements
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.list-item, .project-card, .skill-category, section');
+        elements.forEach(el => observer.observe(el));
     });
     </script>
-    
-    <style>
-    /* Theme toggle button */
-    .theme-toggle {
-        background: none;
-        border: 2px solid var(--accent-primary);
-        border-radius: 8px;
-        padding: 0.5rem;
-        cursor: pointer;
-        font-size: 1.2rem;
-        transition: var(--transition-base);
-        margin-left: var(--space-md);
-    }
-    
-    .theme-toggle:hover {
-        background: var(--accent-primary);
-        transform: scale(1.1);
-    }
-    
-    /* Enterprise mode */
-    body.enterprise-mode {
-        --bg-primary: #f5f5f5;
-        --bg-secondary: #ffffff;
-        --bg-tertiary: #e0e0e0;
-        --bg-card: #ffffff;
-        --text-primary: #1a1a1a;
-        --text-secondary: #4a4a4a;
-        --text-tertiary: #6a6a6a;
-        --accent-primary: #0066cc;
-        --accent-secondary: #ff6b35;
-        --accent-glow: #0066cc;
-    }
-    
-    /* Header scroll behavior */
-    header.scroll-down {
-        transform: translateY(-100%);
-    }
-    
-    header.scroll-up {
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Terminal Easter Egg */
-    .terminal-easter-egg {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        max-width: 90vw;
-        background: #000;
-        border: 2px solid var(--accent-primary);
-        border-radius: 8px;
-        box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-        z-index: 10000;
-        font-family: 'JetBrains Mono', monospace;
-    }
-    
-    .terminal-header {
-        background: #222;
-        padding: var(--space-sm);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid var(--accent-primary);
-    }
-    
-    .terminal-close {
-        background: none;
-        border: none;
-        color: var(--accent-primary);
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--transition-base);
-    }
-    
-    .terminal-close:hover {
-        color: var(--accent-secondary);
-        transform: scale(1.2);
-    }
-    
-    .terminal-body {
-        padding: var(--space-md);
-        height: 300px;
-        overflow-y: auto;
-    }
-    
-    .terminal-text {
-        color: var(--accent-primary);
-        margin: 0;
-        line-height: 1.6;
-    }
-    
-    .terminal-prompt {
-        color: var(--accent-secondary);
-        font-weight: bold;
-    }
-    
-    .terminal-input {
-        background: none;
-        border: none;
-        color: var(--accent-primary);
-        font-family: inherit;
-        font-size: inherit;
-        width: 100%;
-        outline: none;
-        margin-top: var(--space-sm);
-    }
-    
-    .easter-egg-hint {
-        font-size: 0.75rem;
-        color: var(--text-tertiary);
-        margin-top: var(--space-sm);
-        opacity: 0.5;
-    }
-    </style>
 </body>
 </html>
