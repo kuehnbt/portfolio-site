@@ -3,41 +3,67 @@ title: "About Me"
 draft: false
 ---
 
-# From DevOps to Game Development
+# Building Tomorrow's Gaming Infrastructure
 
-Hi! I'm a DevOps engineer with over 10 years of experience building and scaling infrastructure for high-traffic applications. Now, I'm channeling that expertise into my true passion: game development.
+I'm Ben Kuehn, a DevOps architect with over a decade of experience designing and scaling infrastructure for enterprise financial systems. Now, I'm pivoting my expertise toward the gaming industry, where technical challenges meet creative innovation.
 
-## Why Game Development?
+## The Journey
 
-I've always been fascinated by games - not just playing them, but understanding how they work under the hood. My DevOps background gives me a unique perspective on game backend development:
+My career has been defined by solving complex infrastructure problems at scale:
 
-- **Scalability**: I've built systems handling millions of concurrent users
-- **Reliability**: Expert in creating fault-tolerant architectures with 99.99% uptime
-- **Performance**: Deep understanding of optimization, caching, and distributed systems
-- **Infrastructure as Code**: Bringing modern DevOps practices to game server deployment
+- **10+ years** architecting cloud-native solutions
+- **Millions of users** served by systems I've built
+- **99.99% uptime** achieved through robust automation
+- **$100M+ in infrastructure** managed and optimized
 
-## My Journey
+But beneath the enterprise exterior beats the heart of a gamer. I've been fascinated by games since my first lines of BASIC on a Commodore 64. Now, I'm combining my infrastructure expertise with my passion for interactive experiences.
 
-- **2014-2024**: DevOps Engineer specializing in Kubernetes, Docker, and cloud infrastructure
-- **2024**: Started learning game development with Godot and Unity
-- **Current**: Building portfolio projects that combine gaming with infrastructure expertise
+## Why Gaming?
 
-## What I Bring to Gaming
+The gaming industry faces unique technical challenges that perfectly align with my expertise:
 
-My DevOps experience translates directly to critical gaming infrastructure needs:
+### Multiplayer Infrastructure
+- Real-time synchronization at massive scale
+- Low-latency networking across global regions
+- Dynamic server provisioning based on player demand
 
-- **Multiplayer Backend Systems**: Building scalable game servers
-- **Matchmaking Services**: Distributed systems for player matching
-- **Live Operations**: CI/CD pipelines for game updates
-- **Analytics Pipelines**: Real-time player data processing
-- **Anti-Cheat Systems**: Security-focused infrastructure
+### Live Operations
+- Zero-downtime deployments for live games
+- A/B testing and feature flagging for millions
+- Real-time monitoring and incident response
+
+### Performance at Scale
+- Handling viral growth and flash crowds
+- Optimizing costs while maintaining player experience
+- Building anti-cheat and security systems
+
+## What I Bring
+
+My transition isn't starting from zero. Every skill I've honed in enterprise DevOps translates directly to gaming:
+
+### Technical Foundation
+- **Kubernetes mastery**: Orchestrating game servers like microservices
+- **Automation expertise**: CI/CD pipelines for game builds and deployments
+- **Cloud architecture**: Multi-region, fault-tolerant game backends
+- **Performance optimization**: Sub-millisecond response times
+
+### Unique Perspective
+- Enterprise-grade reliability for consumer experiences
+- Cost optimization strategies from managing massive infrastructure
+- Security-first mindset crucial for competitive gaming
+- Data-driven decision making for live ops
 
 ## Current Focus
 
-I'm actively learning:
-- Game networking and multiplayer architecture
-- Godot Engine for game client development
-- Game-specific backend patterns (ECS, tick-based systems)
-- Gaming industry best practices
+I'm actively building my game development skills while leveraging my infrastructure expertise:
 
-Let's build something amazing together!
+- Learning **Godot** and **Unity** for hands-on game development
+- Contributing to open-source game infrastructure projects
+- Building portfolio projects that showcase scalable multiplayer systems
+- Networking with game industry professionals
+
+## Let's Connect
+
+I'm looking for opportunities to bring enterprise-grade infrastructure practices to game development teams. Whether you need help scaling your multiplayer backend, optimizing your deployment pipeline, or building robust live ops systems, I'd love to discuss how my unique background can help.
+
+The future of gaming is built on solid infrastructure. Let's build it together.
