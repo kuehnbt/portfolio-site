@@ -4,7 +4,7 @@ title: "DevOps to Game Backend Engineer"
 theme: "gamedev-portfolio"
 
 params:
-  author: "Your Name"
+  author: "Ben Kuehn"
   description: "DevOps Engineer transitioning to game development - Building scalable infrastructure for the next generation of games"
   subtitle: "From Cloud Infrastructure to Game Servers"
   
@@ -13,9 +13,9 @@ params:
     - name: "GitHub"
       url: "https://github.com/kuehnbt"
     - name: "LinkedIn"
-      url: "https://linkedin.com/in/YOUR-USERNAME"
+      url: "https://www.linkedin.com/in/benjamin-kuehn/"
     - name: "Email"
-      url: "mailto:your-email@example.com"
+      url: "mailto:kuehnbt@gmail.com"
 
 menu:
   main:
