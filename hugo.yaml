@@ -1,0 +1,48 @@
+baseURL: "https://YOUR-USERNAME.github.io/portfolio-site/"
+languageCode: "en-us"
+title: "DevOps to Game Backend Engineer"
+theme: "gamedev-portfolio"
+
+params:
+  author: "Your Name"
+  description: "DevOps Engineer transitioning to game development - Building scalable infrastructure for the next generation of games"
+  subtitle: "From Cloud Infrastructure to Game Servers"
+  
+  # Social links
+  social:
+    - name: "GitHub"
+      url: "https://github.com/YOUR-USERNAME"
+    - name: "LinkedIn"
+      url: "https://linkedin.com/in/YOUR-USERNAME"
+    - name: "Email"
+      url: "mailto:your-email@example.com"
+
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "About"
+      url: "/about/"
+      weight: 2
+    - name: "Projects"
+      url: "/projects/"
+      weight: 3
+    - name: "Skills"
+      url: "/skills/"
+      weight: 4
+    - name: "Blog"
+      url: "/blog/"
+      weight: 5
+    - name: "Contact"
+      url: "/contact/"
+      weight: 6
+
+# Build settings
+markup:
+  highlight:
+    style: monokai
+    lineNos: true
+    lineNoStart: 1
+    lineNumbersInTable: true
+    tabWidth: 4

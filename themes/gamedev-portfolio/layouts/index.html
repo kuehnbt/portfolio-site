@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="hero">
+  <h1>{{ .Site.Title }}</h1>
+  <p class="subtitle">{{ .Site.Params.subtitle }}</p>
+  <p class="description">{{ .Site.Params.description }}</p>
+  
+  <div class="cta-buttons">
+    <a href="/projects/" class="btn btn-primary">View Projects</a>
+    <a href="/contact/" class="btn btn-secondary">Get In Touch</a>
+  </div>
+</div>
+
+<section class="intro">
+  <h2>Welcome!</h2>
+  <p>I'm a DevOps engineer with {{ markdownify "**10+ years**" }} of experience building scalable infrastructure, now transitioning into game development. I bring a unique perspective to game backend development, combining deep infrastructure knowledge with a passion for gaming.</p>
+</section>
+
+<section class="highlights">
+  <h2>What I Bring to Game Development</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>⚡ Performance</h3>
+      <p>Expert in optimizing systems for millions of concurrent users</p>
+    </div>
+    <div class="card">
+      <h3>🔧 Reliability</h3>
+      <p>Building systems with 99.99% uptime SLAs</p>
+    </div>
+    <div class="card">
+      <h3>📊 Scalability</h3>
+      <p>Kubernetes, Docker, and cloud-native architectures</p>
+    </div>
+  </div>
+</section>
+{{ end }}
