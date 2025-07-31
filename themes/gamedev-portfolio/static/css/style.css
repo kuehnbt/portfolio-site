@@ -192,6 +192,115 @@ footer {
   color: var(--accent);
 }
 
+/* Single Page Styles */
+.single-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.single-page h1 {
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.single-page h2 {
+  color: var(--text-primary);
+  margin: 2rem 0 1rem;
+  font-size: 1.8rem;
+}
+
+.single-page h3 {
+  color: var(--text-primary);
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.4rem;
+}
+
+.single-page ul {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.single-page li {
+  margin: 0.5rem 0;
+}
+
+.single-page strong {
+  color: var(--accent);
+}
+
+/* List Page Styles */
+.list-page h1 {
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.list-item {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid #222;
+  transition: all 0.3s;
+}
+
+.list-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.list-item h2 {
+  margin-bottom: 0.5rem;
+}
+
+.list-item h2 a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.list-item h2 a:hover {
+  color: var(--accent);
+}
+
+.list-item time {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.read-more {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Content formatting */
+.content {
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.content p {
+  margin-bottom: 1rem;
+}
+
+.content a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
@@ -199,10 +308,15 @@ footer {
   
   nav ul {
     gap: 1rem;
+    font-size: 0.9rem;
   }
   
   .cta-buttons {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .single-page h1, .list-page h1 {
+    font-size: 2rem;
   }
 }
