@@ -4,6 +4,7 @@ date: 2024-07-15
 draft: false
 summary: "End-to-end automated pipeline for Unity game builds with Steam deployment and multiplayer server orchestration."
 category: "devops"
+image: "/images/devops-placeholder.jpg"
 documented: true
 repository: true
 wip: false

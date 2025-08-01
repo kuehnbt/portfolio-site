@@ -4,6 +4,7 @@ date: 2024-07-20
 draft: false
 summary: "A Kubernetes-based game server orchestration system that automatically scales game instances based on player demand."
 category: "devops"
+image: "/images/devops-placeholder.jpg"
 documented: true
 repository: true
 wip: false

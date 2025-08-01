@@ -4,6 +4,7 @@ date: 2024-08-01
 draft: false
 summary: "Fast-paced multiplayer FPS built in Unreal Engine 5 with custom netcode optimizations for low-latency gameplay."
 category: "gamedev"
+image: "/images/gamedev-placeholder.jpg"
 documented: true
 repository: false
 downloadable: true

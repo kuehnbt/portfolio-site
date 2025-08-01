@@ -4,6 +4,7 @@ date: 2024-06-30
 draft: false
 summary: "Built a real-time analytics pipeline processing 1M+ events/second for player behavior analysis and live ops decisions."
 category: "devops"
+image: "/images/devops-placeholder.jpg"
 documented: true
 repository: true
 wip: false

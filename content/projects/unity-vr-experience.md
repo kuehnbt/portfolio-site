@@ -4,6 +4,7 @@ date: 2024-08-10
 draft: false
 summary: "A calming VR experience built in Unity featuring procedural landscapes and biometric-driven environments."
 category: "gamedev"
+image: "/images/gamedev-placeholder.jpg"
 documented: true
 repository: false
 downloadable: false

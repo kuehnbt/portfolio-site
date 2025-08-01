@@ -4,6 +4,7 @@ date: 2024-07-25
 draft: false
 summary: "A procedurally generated roguelike with persistent progression, built in Godot 4.0 with GDScript."
 category: "gamedev"
+image: "/images/gamedev-placeholder.jpg"
 documented: true
 repository: true
 downloadable: false
