@@ -3,67 +3,52 @@ title: "About Me"
 draft: false
 ---
 
-# Building Tomorrow's Gaming Infrastructure
+# Building Scalable Infrastructure Solutions
 
-I'm Ben Kuehn, a DevOps architect with over a decade of experience designing and scaling infrastructure for enterprise financial systems. Now, I'm pivoting my expertise toward the gaming industry, where technical challenges meet creative innovation.
+I'm Ben Kuehn, a DevOps Engineer with over 12 years of experience designing and implementing scalable infrastructure solutions. I specialize in cloud platforms, automation, and CI/CD pipelines, with a passion for solving complex technical challenges.
 
-## The Journey
+## Professional Background
 
 My career has been defined by solving complex infrastructure problems at scale:
 
-- **10+ years** architecting cloud-native solutions
-- **Millions of users** served by systems I've built
-- **99.99% uptime** achieved through robust automation
-- **$100M+ in infrastructure** managed and optimized
+- **12+ years** in DevOps and System Administration
+- **Cloud expertise** in AWS and Azure environments
+- **Automation specialist** using Terraform, Ansible, and CI/CD pipelines
+- **Infrastructure as Code** champion with focus on scalability and reliability
 
-But beneath the enterprise exterior beats the heart of a gamer. I've been fascinated by games since my first lines of BASIC on a Commodore 64. Now, I'm combining my infrastructure expertise with my passion for interactive experiences.
+I thrive on tackling complex technical challenges and implementing innovative solutions that drive efficiency and performance.
 
-## Why Gaming?
+## Technical Expertise
 
-The gaming industry faces unique technical challenges that perfectly align with my expertise:
+My diverse experience spans multiple areas of infrastructure and development:
 
-### Multiplayer Infrastructure
-- Real-time synchronization at massive scale
-- Low-latency networking across global regions
-- Dynamic server provisioning based on player demand
+### Cloud & Infrastructure
+- **AWS & Azure**: Design and implementation of scalable cloud solutions
+- **Kubernetes & Docker**: Container orchestration and microservices architecture
+- **Infrastructure as Code**: Terraform and Ansible for automated deployments
+- **Monitoring & Observability**: New Relic, ELK Stack, Prometheus, and Grafana
 
-### Live Operations
-- Zero-downtime deployments for live games
-- A/B testing and feature flagging for millions
-- Real-time monitoring and incident response
+### Development & Automation
+- **Languages**: Python, PowerShell, SQL, and shell scripting
+- **CI/CD**: GitLab, GitHub Actions, and automated pipeline design
+- **Version Control**: Git workflows and collaborative development
+- **Agile Methodologies**: Scrum and Kanban implementation
 
-### Performance at Scale
-- Handling viral growth and flash crowds
-- Optimizing costs while maintaining player experience
-- Building anti-cheat and security systems
+### System Architecture
+- **High Availability**: Designing fault-tolerant systems
+- **Performance Optimization**: Identifying and resolving bottlenecks
+- **Security**: Implementing best practices and compliance standards
+- **Disaster Recovery**: Business continuity planning and implementation
 
-## What I Bring
+## Current Projects
 
-My transition isn't starting from zero. Every skill I've honed in enterprise DevOps translates directly to gaming:
+I'm passionate about continuous learning and exploring new technologies:
 
-### Technical Foundation
-- **Kubernetes mastery**: Orchestrating game servers like microservices
-- **Automation expertise**: CI/CD pipelines for game builds and deployments
-- **Cloud architecture**: Multi-region, fault-tolerant game backends
-- **Performance optimization**: Sub-millisecond response times
-
-### Unique Perspective
-- Enterprise-grade reliability for consumer experiences
-- Cost optimization strategies from managing massive infrastructure
-- Security-first mindset crucial for competitive gaming
-- Data-driven decision making for live ops
-
-## Current Focus
-
-I'm actively building my game development skills while leveraging my infrastructure expertise:
-
-- Learning **Godot** and **Unity** for hands-on game development
-- Contributing to open-source game infrastructure projects
-- Building portfolio projects that showcase scalable multiplayer systems
-- Networking with game industry professionals
+- Building scalable web applications with modern frameworks
+- Exploring game development with Godot Engine
+- Contributing to open-source infrastructure projects
+- Developing internal Generative AI systems at Ascensus
 
 ## Let's Connect
 
-I'm looking for opportunities to bring enterprise-grade infrastructure practices to game development teams. Whether you need help scaling your multiplayer backend, optimizing your deployment pipeline, or building robust live ops systems, I'd love to discuss how my unique background can help.
-
-The future of gaming is built on solid infrastructure. Let's build it together.
+I'm always interested in discussing infrastructure challenges, automation opportunities, and innovative technology solutions. Whether you're looking to optimize your current systems, implement new technologies, or tackle complex technical challenges, I'd love to connect and explore how my experience can contribute to your success.

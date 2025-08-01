@@ -1,12 +1,12 @@
 baseURL: "https://kuehnbt.github.io/portfolio-site/"
 languageCode: "en-us"
-title: "DevOps Architect | Cloud Engineer | Aspiring Game Tech Creator"
+title: "DevOps Engineer | Cloud Infrastructure Specialist"
 theme: "gamedev-portfolio"
 
 params:
   author: "Ben Kuehn"
-  description: "DevOps Engineer transitioning to game development - Building scalable infrastructure for the next generation of games"
-  subtitle: "DevOps Architect transitioning to Game Tech"
+  description: "DevOps Engineer with expertise in scalable infrastructure and cloud solutions"
+  subtitle: "DevOps Engineer | Infrastructure Specialist"
   
   # Social links
   social:
