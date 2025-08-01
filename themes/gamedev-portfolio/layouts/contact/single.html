@@ -58,7 +58,7 @@
         <!-- Contact Form -->
         <div class="contact-form-section">
           <h2>Send a Message</h2>
-          <form class="contact-form" action="#" method="POST">
+          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required placeholder="Your name">
@@ -79,16 +79,31 @@
               <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project or opportunity..."></textarea>
             </div>
             
-            <button type="submit" class="btn-submit">
+            <button type="submit" class="btn-submit" id="submit-btn">
               <i class="fas fa-paper-plane"></i>
-              Send Message
+              <span class="btn-text">Send Message</span>
             </button>
             
-            <p class="form-note">
-              <i class="fas fa-info-circle"></i>
-              I typically respond within 24-48 hours
-            </p>
+            <div class="form-status">
+              <p class="form-note">
+                <i class="fas fa-info-circle"></i>
+                I typically respond within 24-48 hours
+              </p>
+              <p class="form-success" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                Message sent successfully! I'll get back to you soon.
+              </p>
+              <p class="form-error" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                Something went wrong. Please try again or email me directly.
+              </p>
+            </div>
           </form>
+          
+          <p class="form-alternative">
+            <small>Note: Replace YOUR_FORM_ID with your Formspree ID, or email me directly at 
+            <a href="mailto:kuehnbt@gmail.com">kuehnbt@gmail.com</a></small>
+          </p>
         </div>
       </div>
     </div>
@@ -347,6 +362,50 @@
   animation: slideInFromRight 0.8s ease-out 0.2s forwards;
 }
 
+/* Form status messages */
+.form-status {
+  margin-top: var(--space-md);
+}
+
+.form-success,
+.form-error {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.form-success {
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+}
+
+.form-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: #ef4444;
+}
+
+.form-alternative {
+  text-align: center;
+  margin-top: var(--space-md);
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+/* Button loading state */
+.btn-submit.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-submit.loading i {
+  animation: spin 1s linear infinite;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .contact-grid {
@@ -365,4 +424,93 @@
   }
 }
 </style>
+
+<script>
+// Contact form handling
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const successMsg = document.querySelector('.form-success');
+  const errorMsg = document.querySelector('.form-error');
+  const formNote = document.querySelector('.form-note');
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Validate form
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      if (!name || !email || !message) {
+        showError();
+        return;
+      }
+      
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending...';
+      
+      try {
+        // If using Formspree or similar service
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          showSuccess();
+          form.reset();
+        } else {
+          showError();
+        }
+      } catch (error) {
+        showError();
+      } finally {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+      }
+    });
+  }
+  
+  function showSuccess() {
+    formNote.style.display = 'none';
+    errorMsg.style.display = 'none';
+    successMsg.style.display = 'flex';
+    successMsg.classList.add('fade-in');
+  }
+  
+  function showError() {
+    formNote.style.display = 'none';
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'flex';
+    errorMsg.classList.add('fade-in');
+    form.classList.add('shake');
+    
+    setTimeout(() => {
+      form.classList.remove('shake');
+    }, 500);
+  }
+  
+  // Add input validation feedback
+  const inputs = form.querySelectorAll('input, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('blur', () => {
+      if (!input.validity.valid) {
+        input.classList.add('error');
+      } else {
+        input.classList.remove('error');
+      }
+    });
+  });
+});
+</script>
 {{ end }}

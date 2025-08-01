@@ -1,5 +1,34 @@
+// Page transition animation
+window.addEventListener('load', () => {
+  const loading = document.getElementById('loading');
+  if (loading) {
+    setTimeout(() => {
+      loading.style.opacity = '0';
+      setTimeout(() => {
+        loading.style.display = 'none';
+      }, 300);
+    }, 100);
+  }
+});
+
 // Smooth scrolling and animations
 document.addEventListener('DOMContentLoaded', function() {
+  // Add page transition on link clicks
+  const transitionLinks = document.querySelectorAll('a:not([href^="#"]):not([href^="http"]):not([href^="mailto"])');
+  
+  transitionLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && !link.classList.contains('no-transition')) {
+        e.preventDefault();
+        document.body.classList.add('page-transitioning');
+        
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
   // Intersection Observer for scroll animations
   const observerOptions = {
     threshold: 0.1,
@@ -157,6 +186,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Uncomment to enable mouse trail
   // animateTrail();
+  
+  // Magnetic buttons effect
+  const magneticButtons = document.querySelectorAll('.btn-pill, .magnetic-button');
+  
+  magneticButtons.forEach(button => {
+    button.addEventListener('mousemove', (e) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      button.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = 'translate(0, 0)';
+    });
+  });
+  
+  // Add interactive classes
+  document.querySelectorAll('.project-card, .skill-tag, .category-tag').forEach(el => {
+    el.classList.add('interactive');
+  });
+  
+  // Add tilt effect to cards
+  document.querySelectorAll('.project-card, .course-card, .certification-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    });
+  });
 });
 
 // Add CSS for mouse trail

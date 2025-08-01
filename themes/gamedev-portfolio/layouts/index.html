@@ -13,13 +13,38 @@
   </div>
   
   <div class="hero-content">
-    <h1 class="hero-title">Hi, I am {{ .Site.Params.author }}</h1>
-    <p class="hero-subtitle">I'm a {{ .Site.Params.subtitle }}!</p>
+    <div class="hero-text-wrapper">
+      <div class="hero-greeting">Hello, I'm</div>
+      <h1 class="hero-title">
+        <span class="name-highlight">{{ .Site.Params.author }}</span>
+      </h1>
+      <div class="hero-subtitle-wrapper">
+        <p class="hero-subtitle">
+          <span class="subtitle-icon">⚡</span>
+          {{ .Site.Params.subtitle }}
+        </p>
+      </div>
+      <p class="hero-description">
+        Building scalable game infrastructure with enterprise-grade reliability
+      </p>
+    </div>
     
     <div class="hero-buttons">
-      <a href="{{ "/games/" | relURL }}" class="btn-pill">GAMES</a>
-      <a href="{{ "/projects/" | relURL }}" class="btn-pill">PROJECTS</a>
-      <a href="{{ "/blog/" | relURL }}" class="btn-pill">BLOG</a>
+      <a href="{{ "/projects/" | relURL }}" class="btn-pill btn-primary">
+        <i class="fas fa-code"></i>
+        VIEW MY WORK
+      </a>
+      <a href="{{ "/about/" | relURL }}" class="btn-pill btn-secondary">
+        <i class="fas fa-user"></i>
+        ABOUT ME
+      </a>
+    </div>
+    
+    <div class="hero-scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span class="scroll-text">Scroll to explore</span>
     </div>
   </div>
 </div>
@@ -292,16 +317,183 @@ window.addEventListener('scroll', () => {
   transform: translateY(0);
 }
 
-.hero-subtitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-xl);
+.hero-text-wrapper {
+  margin-bottom: var(--space-2xl);
 }
 
-/* Override button styles for homepage */
+.hero-greeting {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: fadeInDown 0.8s ease-out 0.3s both;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  margin-bottom: var(--space-md);
+  line-height: 1;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.name-highlight {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.hero-subtitle-wrapper {
+  margin-bottom: var(--space-lg);
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.subtitle-icon {
+  font-size: 1.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.9s both;
+}
+
+/* Enhanced button styles */
+.hero-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3xl);
+  animation: fadeInUp 0.8s ease-out 1.1s both;
+}
+
 .hero-buttons .btn-pill {
-  min-width: 140px;
+  min-width: 180px;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(74, 158, 255, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  animation: fadeIn 1s ease-out 1.5s both;
+}
+
+.scroll-mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--text-tertiary);
+  border-radius: 25px;
+  position: relative;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.scroll-wheel {
+  width: 4px;
+  height: 10px;
+  background: var(--text-tertiary);
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s ease-in-out infinite;
+}
+
+.scroll-text {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scrollWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 20px); opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 </style>
 {{ end }}

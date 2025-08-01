@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#000000"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="50" height="50" fill="none" stroke="#111111" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
+  
+  <!-- Title -->
+  <text x="600" y="250" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="bold">Ben Kuehn</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="320" text-anchor="middle" fill="#cccccc" font-family="Arial, sans-serif" font-size="32">DevOps Architect → Game Developer</text>
+  
+  <!-- Tagline -->
+  <text x="600" y="380" text-anchor="middle" fill="#999999" font-family="Arial, sans-serif" font-size="24">Building scalable game infrastructure</text>
+  
+  <!-- Decorative elements -->
+  <rect x="100" y="100" width="20" height="20" fill="#4a9eff" opacity="0.5"/>
+  <rect x="1080" y="100" width="20" height="20" fill="#a855f7" opacity="0.5"/>
+  <rect x="100" y="510" width="20" height="20" fill="#4ade80" opacity="0.5"/>
+  <rect x="1080" y="510" width="20" height="20" fill="#fb923c" opacity="0.5"/>
+</svg>
