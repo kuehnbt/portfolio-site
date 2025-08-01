@@ -1,7 +1,449 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+<!-- Hero Section - Clean and Simple -->
+<div class="hero-container">
+  <div class="animated-background">
+    <canvas id="mesh-canvas"></canvas>
+    <div class="gradient-overlay"></div>
+  </div>
+  
+  <div class="hero-content">
+    <div class="hero-text-wrapper">
+      <h1 class="hero-greeting">Welcome</h1>
+      <p class="hero-intro">
+        I'm <span class="name-highlight">Ben Kuehn</span>
+      </p>
+      <p class="hero-tagline">
+        I'm a DevOps Engineer with a passion for games!
+      </p>
+    </div>
+    
+    <div class="hero-buttons">
+      <a href="{{ .Site.BaseURL }}projects/" class="btn-pill">
+        PROJECTS
+      </a>
+      <a href="{{ .Site.BaseURL }}skills/" class="btn-pill">
+        SKILLS
+      </a>
+      <a href="{{ .Site.BaseURL }}contact/" class="btn-pill">
+        CONTACT
+      </a>
+    </div>
+    
+    <div class="hero-scroll-indicator">
+      <div class="scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio Section -->
+<section class="bio-section">
+  <div class="container">
+    <div class="bio-content">
+      <div class="bio-image">
+        <img src="{{ .Site.BaseURL }}images/profile-photo-placeholder.svg" alt="Ben Kuehn" />
+      </div>
+      <div class="bio-text">
+        <h2>About Me</h2>
+        <p>
+          Hi! I'm Ben, a UK-based DevOps Engineer transitioning into game development. 
+          I love building scalable infrastructure and exploring the technical challenges 
+          of multiplayer game systems.
+        </p>
+        <p>
+          With over a decade of experience in cloud architecture and automation, 
+          I'm passionate about bringing enterprise-grade reliability to game backends 
+          while learning the creative side of game development.
+        </p>
+        <p>
+          When I'm not coding, you'll find me experimenting with Unity and Godot, 
+          or diving deep into game networking architectures.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Complex mesh animation inspired by Amy Elliott's site
+const canvas = document.getElementById('mesh-canvas');
+const ctx = canvas.getContext('2d');
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+// Configuration
+const config = {
+  particleCount: 150,
+  particleSize: 2,
+  lineDistance: 120,
+  particleSpeed: 0.3,
+  mouseRadius: 150,
+  colors: {
+    particle: '#4a9eff',
+    line: 'rgba(74, 158, 255, 0.15)',
+    glow: 'rgba(74, 158, 255, 0.6)'
+  }
+};
+
+// Particle class
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.vx = (Math.random() - 0.5) * config.particleSpeed;
+    this.vy = (Math.random() - 0.5) * config.particleSpeed;
+    this.radius = Math.random() * config.particleSize + 1;
+  }
+  
+  update() {
+    // Bounce off edges
+    if (this.x < 0 || this.x > width) this.vx = -this.vx;
+    if (this.y < 0 || this.y > height) this.vy = -this.vy;
+    
+    // Update position
+    this.x += this.vx;
+    this.y += this.vy;
+  }
+  
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = config.colors.particle;
+    ctx.fill();
+    
+    // Add glow effect
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = config.colors.glow;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+}
+
+// Create particles
+const particles = [];
+for (let i = 0; i < config.particleCount; i++) {
+  particles.push(new Particle());
+}
+
+// Mouse position
+let mouse = {
+  x: width / 2,
+  y: height / 2
+};
+
+// Track mouse movement
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// Resize handler
+window.addEventListener('resize', () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+
+// Animation loop
+function animate() {
+  // Clear canvas with slight fade effect
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillRect(0, 0, width, height);
+  
+  // Update and draw particles
+  particles.forEach(particle => {
+    particle.update();
+    particle.draw();
+  });
+  
+  // Draw connections
+  particles.forEach((p1, i) => {
+    // Connect to nearby particles
+    particles.slice(i + 1).forEach(p2 => {
+      const dx = p1.x - p2.x;
+      const dy = p1.y - p2.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      if (distance < config.lineDistance) {
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = config.colors.line;
+        ctx.lineWidth = (1 - distance / config.lineDistance) * 2;
+        ctx.stroke();
+      }
+    });
+    
+    // React to mouse
+    const mouseDistance = Math.sqrt(
+      Math.pow(p1.x - mouse.x, 2) + 
+      Math.pow(p1.y - mouse.y, 2)
+    );
+    
+    if (mouseDistance < config.mouseRadius) {
+      const angle = Math.atan2(p1.y - mouse.y, p1.x - mouse.x);
+      const force = (config.mouseRadius - mouseDistance) / config.mouseRadius;
+      p1.vx += Math.cos(angle) * force * 0.1;
+      p1.vy += Math.sin(angle) * force * 0.1;
+    }
+  });
+  
+  requestAnimationFrame(animate);
+}
+
+// Start animation
+animate();
+
+// Smooth reveal animation
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelector('.hero-content').classList.add('visible');
+  }, 300);
+});
+
+// Smooth scroll to bio section
+document.querySelector('.scroll-arrow').addEventListener('click', () => {
+  document.querySelector('.bio-section').scrollIntoView({ 
+    behavior: 'smooth' 
+  });
+});
+</script>
+
+<style>
+/* Hero specific styles */
+.animated-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#mesh-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text-wrapper {
+  margin-bottom: var(--space-3xl);
+  text-align: center;
+}
+
+.hero-greeting {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+  animation: fadeInDown 0.8s ease-out 0.3s both;
+}
+
+.hero-intro {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  margin-bottom: var(--space-md);
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.name-highlight {
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.hero-tagline {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+/* Clean button styles */
+.hero-buttons {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3xl);
+  animation: fadeInUp 0.8s ease-out 0.9s both;
+}
+
+.hero-buttons .btn-pill {
+  min-width: 140px;
+  padding: 0.875rem 2rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeIn 1s ease-out 1.5s both;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Bio Section */
+.bio-section {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.bio-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bio-image {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid var(--border-color);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.bio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.bio-image:hover img {
+  transform: scale(1.05);
+}
+
+.bio-text {
+  animation: slideInFromRight 0.8s ease-out;
+}
+
+.bio-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-xl);
+  color: var(--text-primary);
+}
+
+.bio-text p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-lg);
+  color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scrollWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 20px); opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-greeting {
+    font-size: 2.5rem;
+  }
+  
+  .hero-intro {
+    font-size: 1.5rem;
+  }
+  
+  .hero-tagline {
+    font-size: 1.25rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .btn-pill {
+    width: 200px;
+  }
+  
+  .bio-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .bio-image {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+  }
+}
+</style>
 {{ end }}
