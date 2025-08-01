@@ -1,0 +1,506 @@
+{{ define "main" }}
+<div class="about-container">
+  <!-- Profile Section -->
+  <div class="profile-section">
+    <div class="profile-content">
+      <div class="profile-image-wrapper">
+        <img src="/images/profile-placeholder.svg" alt="{{ .Site.Params.author }}" class="profile-image">
+        <div class="profile-status">
+          <div class="status-dot"></div>
+          <span>Open to opportunities</span>
+        </div>
+      </div>
+      
+      <div class="profile-info">
+        <h1 class="profile-name">{{ .Site.Params.author }}</h1>
+        <p class="profile-tagline">{{ .Site.Params.subtitle }}</p>
+        
+        <div class="profile-stats">
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Projects Shipped</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">99.9%</span>
+            <span class="stat-label">Uptime Achieved</span>
+          </div>
+        </div>
+        
+        <div class="contact-buttons">
+          <a href="mailto:kuehnbt@gmail.com" class="btn-contact">
+            <i class="fas fa-envelope"></i>
+            Email Me
+          </a>
+          <a href="https://www.linkedin.com/in/benjamin-kuehn/" class="btn-contact">
+            <i class="fab fa-linkedin"></i>
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Content -->
+  <div class="about-content-section">
+    <div class="content-wrapper">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <!-- Skills & Tools Section -->
+  <div class="skills-section">
+    <h2 class="section-title">SKILLS & EXPERTISE</h2>
+    
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3><i class="fas fa-server"></i> Infrastructure</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">GitOps</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-code"></i> Programming</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Go</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">GDScript</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-gamepad"></i> Game Tech</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">Godot</span>
+          <span class="skill-tag">Netcode</span>
+          <span class="skill-tag">Game Analytics</span>
+          <span class="skill-tag">LiveOps</span>
+          <span class="skill-tag">Multiplayer</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-chart-line"></i> Monitoring</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Prometheus</span>
+          <span class="skill-tag">Grafana</span>
+          <span class="skill-tag">ELK Stack</span>
+          <span class="skill-tag">Datadog</span>
+          <span class="skill-tag">OpenTelemetry</span>
+          <span class="skill-tag">APM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements Section -->
+  <div class="achievements-section">
+    <h2 class="section-title">ACHIEVEMENTS & CERTIFICATIONS</h2>
+    
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <div class="achievement-icon">🏆</div>
+        <h3>Infrastructure Excellence Award</h3>
+        <p>Recognized for designing zero-downtime deployment system</p>
+        <span class="achievement-year">2023</span>
+      </div>
+      
+      <div class="achievement-card">
+        <div class="achievement-icon">📜</div>
+        <h3>AWS Solutions Architect Pro</h3>
+        <p>Certified in advanced cloud architecture patterns</p>
+        <span class="achievement-year">2022</span>
+      </div>
+      
+      <div class="achievement-card">
+        <div class="achievement-icon">🎮</div>
+        <h3>Unity Certified Developer</h3>
+        <p>Proficient in Unity engine and C# development</p>
+        <span class="achievement-year">2024</span>
+      </div>
+      
+      <div class="achievement-card">
+        <div class="achievement-icon">🚀</div>
+        <h3>10M+ Concurrent Users</h3>
+        <p>Scaled infrastructure to handle massive load</p>
+        <span class="achievement-year">2023</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <div class="timeline-section">
+    <h2 class="section-title">JOURNEY TO GAME DEVELOPMENT</h2>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2013</div>
+        <div class="timeline-content">
+          <h3>Started DevOps Journey</h3>
+          <p>Began career in infrastructure automation and cloud computing</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-date">2018</div>
+        <div class="timeline-content">
+          <h3>Enterprise Scale</h3>
+          <p>Led infrastructure for Fortune 500 financial services</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Gaming Pivot</h3>
+          <p>Started learning game development while maintaining DevOps role</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item active">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>Full Transition</h3>
+          <p>Actively seeking game tech roles, building portfolio projects</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* About Page Specific Styles */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* Profile Section */
+.profile-section {
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.profile-image-wrapper {
+  position: relative;
+}
+
+.profile-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+}
+
+.profile-status {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: var(--space-xs) var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.profile-name {
+  font-size: 3rem;
+  margin-bottom: var(--space-sm);
+}
+
+.profile-tagline {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.profile-stats {
+  display: flex;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Skills Section */
+.skills-section {
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+}
+
+.skill-category h3 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+}
+
+.skill-category h3 i {
+  margin-right: var(--space-xs);
+  color: var(--accent-blue);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.skill-tag {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  transition: all var(--transition-base);
+}
+
+.skill-tag:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+/* Achievements Section */
+.achievements-section {
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.achievement-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--space-lg);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 10px 30px rgba(74, 158, 255, 0.1);
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+}
+
+.achievement-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.achievement-card p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-md);
+}
+
+.achievement-year {
+  display: inline-block;
+  background: var(--bg-hover);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* Timeline Section */
+.timeline-section {
+  padding: var(--space-3xl) 0;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--space-xl);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -35px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+}
+
+.timeline-item.active::before {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 4px rgba(74, 158, 255, 0.2);
+}
+
+.timeline-date {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
+.timeline-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+}
+
+/* About Content Section */
+.about-content-section {
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-wrapper h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.content-wrapper h2 {
+  font-size: 2rem;
+  margin: var(--space-xl) 0 var(--space-lg);
+}
+
+.content-wrapper h3 {
+  font-size: 1.5rem;
+  margin: var(--space-lg) 0 var(--space-md);
+  color: var(--text-secondary);
+}
+
+.content-wrapper p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-md);
+}
+
+.content-wrapper ul {
+  margin: var(--space-md) 0;
+  padding-left: var(--space-lg);
+}
+
+.content-wrapper li {
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .profile-image-wrapper {
+    margin: 0 auto;
+  }
+  
+  .profile-stats {
+    justify-content: center;
+  }
+  
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-item::before {
+    left: -15px;
+  }
+}
+</style>
+{{ end }}

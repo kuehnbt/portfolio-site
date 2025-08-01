@@ -1,0 +1,661 @@
+{{ define "main" }}
+<div class="learning-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>LEARNING & DEVELOPMENT</h1>
+    <p>My structured journey from DevOps to Game Development</p>
+  </div>
+
+  <!-- Current Focus -->
+  <section class="current-focus">
+    <div class="container">
+      <h2 class="section-title">CURRENT FOCUS</h2>
+      <div class="focus-cards">
+        <div class="focus-card active">
+          <div class="focus-icon">🎮</div>
+          <h3>Unity Advanced Multiplayer</h3>
+          <p>Building production-ready netcode solutions</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 65%"></div>
+          </div>
+          <span class="progress-text">65% Complete</span>
+        </div>
+        
+        <div class="focus-card">
+          <div class="focus-icon">🧩</div>
+          <h3>Game Design Patterns</h3>
+          <p>Mastering architectural patterns for games</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 40%"></div>
+          </div>
+          <span class="progress-text">40% Complete</span>
+        </div>
+        
+        <div class="focus-card">
+          <div class="focus-icon">🎨</div>
+          <h3>Technical Art Pipeline</h3>
+          <p>Shader programming and optimization</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 25%"></div>
+          </div>
+          <span class="progress-text">25% Complete</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Completed Courses -->
+  <section class="completed-courses">
+    <div class="container">
+      <h2 class="section-title">COMPLETED COURSES & CERTIFICATIONS</h2>
+      
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-header">
+            <img src="/images/unity-logo.svg" alt="Unity" class="course-logo">
+            <div class="course-meta">
+              <h3>Unity Certified Developer</h3>
+              <p class="course-provider">Unity Technologies</p>
+            </div>
+          </div>
+          <div class="course-details">
+            <p>Comprehensive certification covering Unity engine fundamentals, C# programming, and game optimization.</p>
+            <div class="course-tags">
+              <span class="tag">Unity</span>
+              <span class="tag">C#</span>
+              <span class="tag">Game Dev</span>
+            </div>
+          </div>
+          <div class="course-footer">
+            <span class="completion-date">Completed: March 2024</span>
+            <a href="#" class="cert-link">View Certificate →</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-header">
+            <img src="/images/coursera-logo.svg" alt="Coursera" class="course-logo">
+            <div class="course-meta">
+              <h3>Game Programming Specialization</h3>
+              <p class="course-provider">University of Colorado</p>
+            </div>
+          </div>
+          <div class="course-details">
+            <p>5-course specialization covering C++ game programming, data structures, and software engineering for games.</p>
+            <div class="course-tags">
+              <span class="tag">C++</span>
+              <span class="tag">Algorithms</span>
+              <span class="tag">Architecture</span>
+            </div>
+          </div>
+          <div class="course-footer">
+            <span class="completion-date">Completed: January 2024</span>
+            <a href="#" class="cert-link">View Certificate →</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-header">
+            <img src="/images/gdc-logo.svg" alt="GDC" class="course-logo">
+            <div class="course-meta">
+              <h3>Multiplayer Network Programming</h3>
+              <p class="course-provider">GDC Masterclass</p>
+            </div>
+          </div>
+          <div class="course-details">
+            <p>Advanced workshop on building scalable multiplayer systems, lag compensation, and anti-cheat measures.</p>
+            <div class="course-tags">
+              <span class="tag">Networking</span>
+              <span class="tag">Backend</span>
+              <span class="tag">Security</span>
+            </div>
+          </div>
+          <div class="course-footer">
+            <span class="completion-date">Completed: February 2024</span>
+            <a href="#" class="cert-link">View Certificate →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Path -->
+  <section class="learning-path">
+    <div class="container">
+      <h2 class="section-title">STRUCTURED LEARNING PATH</h2>
+      
+      <div class="path-timeline">
+        <div class="path-phase completed">
+          <div class="phase-marker">✓</div>
+          <div class="phase-content">
+            <h3>Phase 1: Foundation</h3>
+            <p>Game engines, programming languages, basic game dev concepts</p>
+            <ul>
+              <li>Unity & Godot fundamentals</li>
+              <li>C# and GDScript proficiency</li>
+              <li>2D/3D mathematics for games</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="path-phase completed">
+          <div class="phase-marker">✓</div>
+          <div class="phase-content">
+            <h3>Phase 2: Specialization</h3>
+            <p>Leveraging DevOps expertise for game infrastructure</p>
+            <ul>
+              <li>Multiplayer architecture</li>
+              <li>Game server orchestration</li>
+              <li>Live ops and analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="path-phase current">
+          <div class="phase-marker">→</div>
+          <div class="phase-content">
+            <h3>Phase 3: Advanced Topics</h3>
+            <p>Deep dive into complex game systems</p>
+            <ul>
+              <li>Custom engine development</li>
+              <li>Advanced graphics programming</li>
+              <li>AI and procedural generation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="path-phase">
+          <div class="phase-marker">○</div>
+          <div class="phase-content">
+            <h3>Phase 4: Production</h3>
+            <p>Shipping games at scale</p>
+            <ul>
+              <li>AAA production pipelines</li>
+              <li>Performance optimization</li>
+              <li>Platform certification</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="resources-section">
+    <div class="container">
+      <h2 class="section-title">LEARNING RESOURCES</h2>
+      
+      <div class="resource-categories">
+        <div class="resource-category">
+          <h3><i class="fas fa-book"></i> Books</h3>
+          <ul class="resource-list">
+            <li><a href="#">Game Programming Patterns</a> by Robert Nystrom</li>
+            <li><a href="#">Real-Time Rendering</a> by Akenine-Möller</li>
+            <li><a href="#">Multiplayer Game Programming</a> by Glazer & Madhav</li>
+          </ul>
+        </div>
+
+        <div class="resource-category">
+          <h3><i class="fas fa-video"></i> Video Series</h3>
+          <ul class="resource-list">
+            <li><a href="#">GDC Vault</a> - Industry talks and postmortems</li>
+            <li><a href="#">Brackeys Archive</a> - Unity tutorials</li>
+            <li><a href="#">Sebastian Lague</a> - Advanced programming</li>
+          </ul>
+        </div>
+
+        <div class="resource-category">
+          <h3><i class="fas fa-users"></i> Communities</h3>
+          <ul class="resource-list">
+            <li><a href="#">r/gamedev</a> - Reddit community</li>
+            <li><a href="#">GameDev.net</a> - Forums and articles</li>
+            <li><a href="#">Unity Forum</a> - Official community</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Study Schedule -->
+  <section class="study-schedule">
+    <div class="container">
+      <h2 class="section-title">WEEKLY STUDY SCHEDULE</h2>
+      
+      <div class="schedule-grid">
+        <div class="schedule-day">
+          <h4>Monday</h4>
+          <div class="schedule-block">
+            <span class="time">6:00 - 8:00 AM</span>
+            <span class="activity">Unity Multiplayer Course</span>
+          </div>
+        </div>
+        
+        <div class="schedule-day">
+          <h4>Tuesday</h4>
+          <div class="schedule-block">
+            <span class="time">6:00 - 8:00 AM</span>
+            <span class="activity">C++ Practice & Algorithms</span>
+          </div>
+        </div>
+        
+        <div class="schedule-day">
+          <h4>Wednesday</h4>
+          <div class="schedule-block">
+            <span class="time">6:00 - 8:00 AM</span>
+            <span class="activity">Game Design Theory</span>
+          </div>
+        </div>
+        
+        <div class="schedule-day">
+          <h4>Thursday</h4>
+          <div class="schedule-block">
+            <span class="time">6:00 - 8:00 AM</span>
+            <span class="activity">Project Implementation</span>
+          </div>
+        </div>
+        
+        <div class="schedule-day">
+          <h4>Friday</h4>
+          <div class="schedule-block">
+            <span class="time">6:00 - 8:00 AM</span>
+            <span class="activity">Graphics & Shaders</span>
+          </div>
+        </div>
+        
+        <div class="schedule-day weekend">
+          <h4>Weekend</h4>
+          <div class="schedule-block">
+            <span class="time">4+ hours</span>
+            <span class="activity">Game Jams & Personal Projects</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="study-stats">
+        <div class="stat">
+          <span class="stat-number">20+</span>
+          <span class="stat-label">Hours/Week</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Total Hours</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">15</span>
+          <span class="stat-label">Courses Completed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Learning Page Specific Styles */
+.learning-container {
+  min-height: 100vh;
+}
+
+/* Current Focus Section */
+.current-focus {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
+}
+
+.focus-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.focus-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+}
+
+.focus-card.active {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 1px var(--accent-blue);
+}
+
+.focus-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+}
+
+.focus-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.focus-card p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-hover);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: var(--space-xs);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-blue);
+  transition: width var(--transition-slow);
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+/* Completed Courses */
+.completed-courses {
+  padding: var(--space-3xl) 0;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.course-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.course-header {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.course-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.course-meta h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-xs);
+}
+
+.course-provider {
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+}
+
+.course-details {
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
+.course-details p {
+  margin-bottom: var(--space-md);
+}
+
+.course-tags {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--bg-hover);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.course-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.completion-date {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+.cert-link {
+  color: var(--accent-blue);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Learning Path */
+.learning-path {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
+}
+
+.path-timeline {
+  margin-top: var(--space-xl);
+}
+
+.path-phase {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+.path-phase:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  bottom: -30px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.phase-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.path-phase.completed .phase-marker {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: white;
+}
+
+.path-phase.current .phase-marker {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: white;
+}
+
+.phase-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.phase-content p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.phase-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.phase-content li {
+  padding-left: var(--space-lg);
+  position: relative;
+  margin-bottom: var(--space-xs);
+  color: var(--text-tertiary);
+}
+
+.phase-content li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+}
+
+/* Resources Section */
+.resources-section {
+  padding: var(--space-3xl) 0;
+}
+
+.resource-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.resource-category h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.resource-category h3 i {
+  margin-right: var(--space-sm);
+  color: var(--accent-blue);
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+}
+
+.resource-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.resource-list a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.resource-list a:hover {
+  color: var(--accent-blue);
+  transform: translateX(4px);
+  display: inline-block;
+}
+
+/* Study Schedule */
+.study-schedule {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.schedule-day {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.schedule-day.weekend {
+  grid-column: span 2;
+}
+
+.schedule-day h4 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-md);
+  color: var(--accent-blue);
+}
+
+.schedule-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.time {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.activity {
+  color: var(--text-secondary);
+}
+
+.study-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3xl);
+  margin-top: var(--space-3xl);
+}
+
+.study-stats .stat {
+  text-align: center;
+}
+
+.study-stats .stat-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.study-stats .stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .schedule-day.weekend {
+    grid-column: span 1;
+  }
+  
+  .study-stats {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+}
+</style>
+{{ end }}
