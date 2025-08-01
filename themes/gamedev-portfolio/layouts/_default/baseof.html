@@ -126,18 +126,6 @@
         });
     });
     
-    // Dropdown menu
-    document.querySelector('.dropdown-toggle').addEventListener('click', (e) => {
-        e.preventDefault();
-        e.target.parentElement.classList.toggle('active');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelector('.dropdown').classList.remove('active');
-        }
-    });
     
     // Add subtle animations on scroll
     const observerOptions = {
