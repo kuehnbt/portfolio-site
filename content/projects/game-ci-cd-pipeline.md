@@ -3,6 +3,10 @@ title: "Automated Game CI/CD Pipeline"
 date: 2024-07-15
 draft: false
 summary: "End-to-end automated pipeline for Unity game builds with Steam deployment and multiplayer server orchestration."
+category: "devops"
+documented: true
+repository: true
+wip: false
 ---
 
 ## Overview

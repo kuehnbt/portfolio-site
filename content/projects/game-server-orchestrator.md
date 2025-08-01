@@ -3,6 +3,10 @@ title: "Game Server Orchestrator"
 date: 2024-07-20
 draft: false
 summary: "A Kubernetes-based game server orchestration system that automatically scales game instances based on player demand."
+category: "devops"
+documented: true
+repository: true
+wip: false
 ---
 
 ## Overview

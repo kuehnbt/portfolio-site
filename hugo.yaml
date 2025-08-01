@@ -6,7 +6,7 @@ theme: "gamedev-portfolio"
 params:
   author: "Ben Kuehn"
   description: "DevOps Engineer transitioning to game development - Building scalable infrastructure for the next generation of games"
-  subtitle: "From Cloud Infrastructure to Game Servers"
+  subtitle: "DevOps Architect transitioning to Game Tech"
   
   # Social links
   social:

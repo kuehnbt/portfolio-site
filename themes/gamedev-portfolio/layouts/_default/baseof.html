@@ -12,10 +12,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
     
-    <title>{{ if .IsHome }}{{ .Site.Params.author }} - {{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Params.author }}{{ end }}</title>
+    <title>{{ if .IsHome }}{{ .Site.Params.author }}{{ else }}{{ .Title }} - {{ .Site.Params.author }}{{ end }}</title>
     
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
     <link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Loading Animation -->
@@ -23,37 +26,66 @@
         <div class="loading-spinner"></div>
     </div>
     
-    {{ if not .IsHome }}
+    <!-- Header - Always visible like Amy's -->
     <header>
         <nav>
             <a href="/" class="logo">{{ .Site.Params.author }}</a>
             <ul>
-                {{ range .Site.Menus.main }}
-                {{ if ne .Name "Home" }}
-                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-                {{ end }}
-                {{ end }}
+                <li><a href="/" {{ if .IsHome }}class="active"{{ end }}>HOME</a></li>
+                <li><a href="/highlights/" {{ if eq .RelPermalink "/highlights/" }}class="active"{{ end }}>HIGHLIGHTS</a></li>
+                <li><a href="/about/" {{ if eq .RelPermalink "/about/" }}class="active"{{ end }}>ABOUT</a></li>
+                <li><a href="/games/" {{ if eq .RelPermalink "/games/" }}class="active"{{ end }}>GAMES</a></li>
+                <li><a href="/projects/" {{ if or (eq .RelPermalink "/projects/") (eq .Section "projects") }}class="active"{{ end }}>PROJECTS</a></li>
+                <li><a href="/blog/" {{ if or (eq .RelPermalink "/blog/") (eq .Section "blog") }}class="active"{{ end }}>BLOG</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">MORE <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 0.3em;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="/skills/">SKILLS</a>
+                        <a href="/learning/">LEARNING</a>
+                        <a href="/contact/">CONTACT</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
-    {{ end }}
     
     <main>
         {{ block "main" . }}{{ end }}
     </main>
     
-    {{ if not .IsHome }}
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-links">
-                {{ range .Site.Params.social }}
-                <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
-                {{ end }}
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>{{ .Site.Params.author }}</h4>
+                    <p>{{ .Site.Params.description }}</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        {{ range .Site.Params.social }}
+                        <a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                            {{ if eq .name "GitHub" }}<i class="fab fa-github"></i>{{ end }}
+                            {{ if eq .name "LinkedIn" }}<i class="fab fa-linkedin"></i>{{ end }}
+                            {{ if eq .name "Twitter" }}<i class="fab fa-twitter"></i>{{ end }}
+                            {{ if eq .name "Email" }}<i class="fas fa-envelope"></i>{{ end }}
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Recent Posts</h4>
+                    {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+                    <a href="{{ .RelPermalink }}" class="footer-link">{{ .Title }}</a>
+                    {{ end }}
+                </div>
             </div>
-            <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. All rights reserved.</p>
         </div>
     </footer>
-    {{ end }}
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">BACK TO TOP</button>
     
     <script>
     // Loading animation
@@ -62,9 +94,39 @@
             document.getElementById('loading').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
-                document.body.classList.add('loaded');
             }, 300);
-        }, 300);
+        }, 500);
+    });
+    
+    // Back to Top functionality
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Dropdown menu
+    document.querySelector('.dropdown-toggle').addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.classList.toggle('active');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelector('.dropdown').classList.remove('active');
+        }
     });
     
     // Add subtle animations on scroll
@@ -82,9 +144,9 @@
         });
     }, observerOptions);
     
-    // Observe all content elements
+    // Observe elements
     document.addEventListener('DOMContentLoaded', () => {
-        const elements = document.querySelectorAll('.list-item, .project-card, .skill-category, section');
+        const elements = document.querySelectorAll('.project-card, .skill-category, .about-header, section');
         elements.forEach(el => observer.observe(el));
     });
     </script>

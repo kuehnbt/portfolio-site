@@ -1,108 +1,163 @@
 {{ define "main" }}
-<!-- Hero Section with Animated Background -->
+<!-- Hero Section with Complex Animated Background -->
 <div class="hero-container">
   <div class="animated-background">
-    <div class="gradient-bg"></div>
-    <canvas id="particle-canvas"></canvas>
+    <canvas id="mesh-canvas"></canvas>
+    <div class="gradient-overlay"></div>
   </div>
   
   <div class="hero-content">
-    <h1 class="hero-title">Hi, I am Ben Kuehn</h1>
-    <p class="hero-subtitle">I'm a DevOps Architect transitioning to Game Tech!</p>
+    <h1 class="hero-title">Hi, I am {{ .Site.Params.author }}</h1>
+    <p class="hero-subtitle">I'm a {{ .Site.Params.subtitle }}!</p>
     
     <div class="hero-buttons">
-      <a href="/projects/" class="btn-primary">PROJECTS</a>
-      <a href="/blog/" class="btn-primary">BLOG</a>
-      <a href="/about/" class="btn-primary">ABOUT</a>
+      <a href="/games/" class="btn-pill">GAMES</a>
+      <a href="/projects/" class="btn-pill">PROJECTS</a>
+      <a href="/blog/" class="btn-pill">BLOG</a>
     </div>
   </div>
 </div>
 
 <script>
-// Three.js-inspired particle animation
-const canvas = document.getElementById('particle-canvas');
+// Complex mesh animation inspired by Amy Elliott's site
+const canvas = document.getElementById('mesh-canvas');
 const ctx = canvas.getContext('2d');
 
-// Set canvas size
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
 
-// Particle system
+// Configuration
+const config = {
+  particleCount: 150,
+  particleSize: 2,
+  lineDistance: 120,
+  particleSpeed: 0.3,
+  mouseRadius: 150,
+  colors: {
+    particle: '#4a9eff',
+    line: 'rgba(74, 158, 255, 0.15)',
+    glow: 'rgba(74, 158, 255, 0.6)'
+  }
+};
+
+// Particle class
 class Particle {
   constructor() {
-    this.reset();
-    this.y = Math.random() * canvas.height;
-  }
-  
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = canvas.height + Math.random() * 100;
-    this.speed = Math.random() * 3 + 1;
-    this.radius = Math.random() * 2 + 1;
-    this.opacity = Math.random() * 0.5 + 0.2;
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.vx = (Math.random() - 0.5) * config.particleSpeed;
+    this.vy = (Math.random() - 0.5) * config.particleSpeed;
+    this.radius = Math.random() * config.particleSize + 1;
   }
   
   update() {
-    this.y -= this.speed;
-    this.x += Math.sin(this.y * 0.01) * 0.5;
+    // Bounce off edges
+    if (this.x < 0 || this.x > width) this.vx = -this.vx;
+    if (this.y < 0 || this.y > height) this.vy = -this.vy;
     
-    if (this.y < -50) {
-      this.reset();
-    }
+    // Update position
+    this.x += this.vx;
+    this.y += this.vy;
   }
   
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(100, 200, 255, ${this.opacity})`;
+    ctx.fillStyle = config.colors.particle;
     ctx.fill();
+    
+    // Add glow effect
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = config.colors.glow;
+    ctx.fill();
+    ctx.shadowBlur = 0;
   }
 }
 
 // Create particles
-const particleCount = 100;
 const particles = [];
-for (let i = 0; i < particleCount; i++) {
+for (let i = 0; i < config.particleCount; i++) {
   particles.push(new Particle());
 }
 
+// Mouse position
+let mouse = {
+  x: width / 2,
+  y: height / 2
+};
+
+// Track mouse movement
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// Resize handler
+window.addEventListener('resize', () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+
 // Animation loop
 function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Clear canvas with slight fade effect
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillRect(0, 0, width, height);
   
+  // Update and draw particles
   particles.forEach(particle => {
     particle.update();
     particle.draw();
   });
   
+  // Draw connections
+  particles.forEach((p1, i) => {
+    // Connect to nearby particles
+    particles.slice(i + 1).forEach(p2 => {
+      const dx = p1.x - p2.x;
+      const dy = p1.y - p2.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      if (distance < config.lineDistance) {
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = config.colors.line;
+        ctx.lineWidth = (1 - distance / config.lineDistance) * 2;
+        ctx.stroke();
+      }
+    });
+    
+    // React to mouse
+    const mouseDistance = Math.sqrt(
+      Math.pow(p1.x - mouse.x, 2) + 
+      Math.pow(p1.y - mouse.y, 2)
+    );
+    
+    if (mouseDistance < config.mouseRadius) {
+      const angle = Math.atan2(p1.y - mouse.y, p1.x - mouse.x);
+      const force = (config.mouseRadius - mouseDistance) / config.mouseRadius;
+      p1.vx += Math.cos(angle) * force * 0.1;
+      p1.vy += Math.sin(angle) * force * 0.1;
+    }
+  });
+  
   requestAnimationFrame(animate);
 }
 
+// Start animation
 animate();
 
-// Smooth reveal animation on load
+// Smooth reveal animation
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.hero-content').classList.add('fade-in');
+  setTimeout(() => {
+    document.querySelector('.hero-content').classList.add('visible');
+  }, 300);
 });
 </script>
 
 <style>
-/* Hero Container */
-.hero-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Animated Background */
+/* Hero specific styles */
 .animated-background {
   position: absolute;
   top: 0;
@@ -112,30 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   z-index: 0;
 }
 
-.gradient-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #16213e 75%, #1a1a2e 100%);
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #16213e 75%, #1a1a2e 100%);
-  }
-  25% {
-    background: linear-gradient(135deg, #16213e 0%, #0f3460 25%, #1a1a2e 50%, #0f3460 75%, #16213e 100%);
-  }
-  50% {
-    background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0f3460 100%);
-  }
-  75% {
-    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
-  }
-}
-
-#particle-canvas {
+#mesh-canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -143,106 +175,37 @@ document.addEventListener('DOMContentLoaded', () => {
   height: 100%;
 }
 
-/* Hero Content */
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.5s;
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
 }
 
-.hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+.hero-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  font-weight: 300;
-  margin-bottom: 3rem;
-  opacity: 0.9;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
 }
 
-/* Hero Buttons */
-.hero-buttons {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  background: transparent;
-  color: white;
-  text-decoration: none;
-  border: 2px solid white;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: white;
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.btn-primary:hover {
-  color: #1a1a2e;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-}
-
-.btn-primary:hover::before {
-  left: 0;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .btn-primary {
-    width: 200px;
-    text-align: center;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
+/* Override button styles for homepage */
+.hero-buttons .btn-pill {
+  min-width: 140px;
 }
 </style>
 {{ end }}

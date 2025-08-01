@@ -1,67 +1,228 @@
 {{ define "main" }}
-<div class="projects-page">
-  <h1>{{ .Title }}</h1>
-  
-  <div class="content">
-    {{ .Content }}
+<!-- Projects Page Header -->
+<div class="page-header">
+  <h1>PROJECTS</h1>
+  <p>CLICK ON A PROJECT TO READ MORE.</p>
+  <div class="project-legend">
+    <span class="legend-item"><i class="fas fa-file-alt"></i> Documented</span>
+    <span class="legend-item"><i class="fas fa-code-branch"></i> Public Repository</span>
+    <span class="legend-item"><i class="fas fa-download"></i> Downloadable</span>
+    <span class="legend-item"><i class="fas fa-hammer"></i> Work In Progress</span>
   </div>
-  
-  <div class="project-grid">
-    {{ range .RegularPages }}
-    <a href="{{ .RelPermalink }}" class="project-card">
-      <div class="project-content">
-        <h3>{{ .Title }}</h3>
-        {{ if .Params.summary }}
-        <p>{{ .Params.summary }}</p>
-        {{ else }}
-        <p>{{ .Summary | truncate 150 }}</p>
-        {{ end }}
-        <div class="project-meta">
-          <time>{{ .Date.Format "January 2006" }}</time>
-          <span class="arrow">→</span>
+</div>
+
+<!-- Projects Sections -->
+<div class="projects-container">
+  <!-- DevOps Infrastructure Projects -->
+  <section class="projects-section">
+    <h2 class="section-title">DEVOPS INFRASTRUCTURE</h2>
+    <div class="project-grid">
+      {{ range where .RegularPages "Params.category" "devops" }}
+      <a href="{{ .RelPermalink }}" class="project-card">
+        {{ if .Params.image }}
+        <div class="project-image-wrapper">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="project-image">
         </div>
-      </div>
-    </a>
-    {{ end }}
+        {{ else }}
+        <div class="project-placeholder">
+          <i class="fas fa-server"></i>
+        </div>
+        {{ end }}
+        <div class="project-info">
+          <h3 class="project-title">{{ .Title }}</h3>
+          <div class="project-badges">
+            {{ if .Params.documented }}<i class="fas fa-file-alt" title="Documented"></i>{{ end }}
+            {{ if .Params.repository }}<i class="fas fa-code-branch" title="Public Repository"></i>{{ end }}
+            {{ if .Params.downloadable }}<i class="fas fa-download" title="Downloadable"></i>{{ end }}
+            {{ if .Params.wip }}<i class="fas fa-hammer" title="Work In Progress"></i>{{ end }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- Game Development Projects -->
+  <section class="projects-section">
+    <h2 class="section-title">GAME DEVELOPMENT</h2>
+    <div class="project-grid">
+      {{ range where .RegularPages "Params.category" "gamedev" }}
+      <a href="{{ .RelPermalink }}" class="project-card">
+        {{ if .Params.image }}
+        <div class="project-image-wrapper">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="project-image">
+        </div>
+        {{ else }}
+        <div class="project-placeholder">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        {{ end }}
+        <div class="project-info">
+          <h3 class="project-title">{{ .Title }}</h3>
+          <div class="project-badges">
+            {{ if .Params.documented }}<i class="fas fa-file-alt" title="Documented"></i>{{ end }}
+            {{ if .Params.repository }}<i class="fas fa-code-branch" title="Public Repository"></i>{{ end }}
+            {{ if .Params.downloadable }}<i class="fas fa-download" title="Downloadable"></i>{{ end }}
+            {{ if .Params.wip }}<i class="fas fa-hammer" title="Work In Progress"></i>{{ end }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- Personal Projects -->
+  <section class="projects-section">
+    <h2 class="section-title">PERSONAL PROJECTS</h2>
+    <div class="project-grid">
+      {{ range where .RegularPages "Params.category" "personal" }}
+      <a href="{{ .RelPermalink }}" class="project-card">
+        {{ if .Params.image }}
+        <div class="project-image-wrapper">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="project-image">
+        </div>
+        {{ else }}
+        <div class="project-placeholder">
+          <i class="fas fa-code"></i>
+        </div>
+        {{ end }}
+        <div class="project-info">
+          <h3 class="project-title">{{ .Title }}</h3>
+          <div class="project-badges">
+            {{ if .Params.documented }}<i class="fas fa-file-alt" title="Documented"></i>{{ end }}
+            {{ if .Params.repository }}<i class="fas fa-code-branch" title="Public Repository"></i>{{ end }}
+            {{ if .Params.downloadable }}<i class="fas fa-download" title="Downloadable"></i>{{ end }}
+            {{ if .Params.wip }}<i class="fas fa-hammer" title="Work In Progress"></i>{{ end }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  
+  <!-- Category Pills at Bottom -->
+  <div class="category-pills">
+    <span class="category-pill" style="background: var(--accent-blue);">Personal</span>
+    <span class="category-pill" style="background: var(--accent-purple);">Game Dev</span>
+    <span class="category-pill" style="background: var(--accent-green);">DevOps</span>
   </div>
 </div>
 
 <style>
-.projects-page {
-  max-width: 1200px;
+/* Projects Page Specific Styles */
+.projects-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-md);
+  padding: 0 var(--space-xl);
 }
 
-.projects-page h1 {
-  text-align: center;
-  margin-bottom: var(--space-lg);
+.project-legend {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  margin-top: var(--space-md);
+  font-size: 0.875rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text-secondary);
+}
+
+.legend-item i {
+  color: var(--text-tertiary);
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: var(--space-md);
-  margin-top: var(--space-2xl);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
 }
 
-.project-meta {
+.project-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-image-wrapper {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.project-placeholder {
+  width: 100%;
+  height: 240px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: var(--space-md);
+  justify-content: center;
+  background: var(--bg-secondary);
+  font-size: 4rem;
   color: var(--text-tertiary);
-  font-size: 0.875rem;
 }
 
-.project-meta .arrow {
-  color: var(--accent-primary);
-  font-size: 1.2rem;
-  transition: var(--transition-base);
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
 }
 
-.project-card:hover .arrow {
-  transform: translateX(4px);
+.project-card:hover .project-image {
+  transform: scale(1.1);
+}
+
+.project-info {
+  padding: var(--space-md);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.project-badges {
+  display: flex;
+  gap: var(--space-md);
+  color: var(--text-tertiary);
+  font-size: 1rem;
+}
+
+.project-badges i {
+  transition: var(--transition-fast);
+}
+
+.project-badges i:hover {
+  color: var(--accent-blue);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-light);
+}
+
+@media (max-width: 768px) {
+  .project-legend {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 {{ end }}
