@@ -3,9 +3,9 @@ title: "Contact"
 draft: false
 ---
 
-# Let's Build Something Amazing
+# Get In Touch
 
-I'm always interested in connecting with game developers, studios, and teams looking to level up their infrastructure and backend systems.
+I'm always interested in discussing infrastructure challenges, automation opportunities, and innovative technology solutions.
 
 ## Get in Touch
 
@@ -29,28 +29,21 @@ I'm always interested in connecting with game developers, studios, and teams loo
   </div>
 </div>
 
-## Open to Opportunities
+## Professional Background
 
-I'm particularly interested in roles and projects involving:
+With over 12 years of experience in DevOps and cloud infrastructure, I bring expertise in:
 
-### Full-Time Positions
-- **Game Backend Engineer** - Building scalable multiplayer infrastructure
-- **DevOps Engineer** - Optimizing game deployment and operations
-- **Infrastructure Architect** - Designing next-gen gaming platforms
-- **Live Ops Engineer** - Managing production game services
+### Core Competencies
+- **Cloud Platforms** - AWS and Azure architecture and optimization
+- **Container Orchestration** - Kubernetes, Docker, and microservices
+- **Infrastructure as Code** - Terraform, Ansible, and GitOps workflows
+- **CI/CD Pipelines** - Automated build, test, and deployment systems
 
-### Consulting & Contract Work
-- Scaling multiplayer backends from prototype to production
-- Implementing CI/CD pipelines for game development
-- Kubernetes orchestration for game servers
-- Performance optimization and cost reduction
-- Building monitoring and analytics systems
-
-### Collaboration
-- Open-source game infrastructure projects
-- Technical advisory for indie game studios
-- Speaking at game development conferences
-- Writing technical articles about game backend development
+### Current Focus
+- Building scalable cloud solutions
+- Automating infrastructure deployments
+- Optimizing system performance and costs
+- Developing internal AI systems
 
 ## What I Can Help With
 

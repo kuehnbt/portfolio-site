@@ -2,18 +2,31 @@
 <div class="contact-container">
   <!-- Page Header -->
   <div class="page-header">
-    <h1>LET'S CONNECT</h1>
-    <p>Interested in discussing game infrastructure, DevOps, or potential opportunities? I'd love to hear from you!</p>
+    <h1>CONTACT</h1>
+    <p>Let's discuss how I can help with your infrastructure challenges</p>
   </div>
 
   <!-- Contact Content -->
   <section class="contact-content">
     <div class="container">
-      <div class="contact-grid">
+      <div class="contact-main">
+        <!-- Resume Section -->
+        <div class="resume-section">
+          <h2>Professional Summary</h2>
+          <p>DevOps Engineer with 12+ years of experience building scalable infrastructure solutions. Expertise in cloud platforms, automation, and CI/CD pipelines.</p>
+          
+          <div class="resume-download">
+            <a href="{{ .Site.BaseURL }}resume/BenjaminKuehn-Resume.pdf" class="btn-resume" download>
+              <i class="fas fa-file-pdf"></i>
+              <span>Download Resume</span>
+            </a>
+            <p class="resume-note">PDF format • Updated {{ now.Format "January 2006" }}</p>
+          </div>
+        </div>
+
         <!-- Contact Information -->
-        <div class="contact-info">
-          <h2>Get In Touch</h2>
-          <p>I'm actively seeking opportunities in game development where I can leverage my infrastructure expertise to build scalable, reliable gaming experiences.</p>
+        <div class="contact-info-section">
+          <h2>Contact Information</h2>
           
           <div class="contact-methods">
             <div class="contact-method">
@@ -21,6 +34,7 @@
               <div>
                 <h3>Email</h3>
                 <a href="mailto:kuehnbt@gmail.com">kuehnbt@gmail.com</a>
+                <p class="method-note">Best for professional inquiries</p>
               </div>
             </div>
             
@@ -29,6 +43,7 @@
               <div>
                 <h3>LinkedIn</h3>
                 <a href="https://www.linkedin.com/in/benjamin-kuehn/" target="_blank">linkedin.com/in/benjamin-kuehn</a>
+                <p class="method-note">Professional networking</p>
               </div>
             </div>
             
@@ -37,6 +52,7 @@
               <div>
                 <h3>GitHub</h3>
                 <a href="https://github.com/kuehnbt" target="_blank">github.com/kuehnbt</a>
+                <p class="method-note">View my code and projects</p>
               </div>
             </div>
             
@@ -44,99 +60,35 @@
               <i class="fas fa-map-marker-alt"></i>
               <div>
                 <h3>Location</h3>
-                <span>Available for remote or relocation</span>
+                <span>Washington DC Area</span>
+                <p class="method-note">Available for remote opportunities</p>
               </div>
             </div>
           </div>
-          
-          <div class="availability-status">
-            <div class="status-indicator"></div>
-            <span>Currently available for new opportunities</span>
-          </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form-section">
-          <h2>Send a Message</h2>
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name">
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-            </div>
-            
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required placeholder="What's this about?">
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project or opportunity..."></textarea>
-            </div>
-            
-            <button type="submit" class="btn-submit" id="submit-btn">
-              <i class="fas fa-paper-plane"></i>
-              <span class="btn-text">Send Message</span>
-            </button>
-            
-            <div class="form-status">
-              <p class="form-note">
-                <i class="fas fa-info-circle"></i>
-                I typically respond within 24-48 hours
-              </p>
-              <p class="form-success" style="display: none;">
-                <i class="fas fa-check-circle"></i>
-                Message sent successfully! I'll get back to you soon.
-              </p>
-              <p class="form-error" style="display: none;">
-                <i class="fas fa-exclamation-circle"></i>
-                Something went wrong. Please try again or email me directly.
-              </p>
-            </div>
-          </form>
-          
-          <p class="form-alternative">
-            <small>Note: Replace YOUR_FORM_ID with your Formspree ID, or email me directly at 
-            <a href="mailto:kuehnbt@gmail.com">kuehnbt@gmail.com</a></small>
-          </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Call to Action -->
-  <section class="contact-cta">
-    <div class="container">
-      <div class="cta-content">
-        <h2>Looking for a Technical Game Developer?</h2>
-        <p>I bring enterprise-grade infrastructure expertise to game development, ensuring your games scale seamlessly from prototype to millions of players.</p>
-        <div class="cta-buttons">
-          <a href="{{ "/projects/" | relURL }}" class="btn-pill">View My Work</a>
-          <a href="{{ "/about/" | relURL }}" class="btn-pill btn-secondary">Learn More About Me</a>
+      <!-- Quick Links -->
+      <div class="quick-links">
+        <h3>Learn More</h3>
+        <div class="link-grid">
+          <a href="{{ .Site.BaseURL }}about/" class="quick-link">
+            <i class="fas fa-user"></i>
+            <span>About Me</span>
+          </a>
+          <a href="{{ .Site.BaseURL }}projects/" class="quick-link">
+            <i class="fas fa-folder-open"></i>
+            <span>Projects</span>
+          </a>
+          <a href="{{ .Site.BaseURL }}skills/" class="quick-link">
+            <i class="fas fa-tools"></i>
+            <span>Skills</span>
+          </a>
+          <a href="{{ .Site.BaseURL }}learning/" class="quick-link">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Learning</span>
+          </a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Links -->
-  <section class="social-section">
-    <div class="container">
-      <h3>Find Me Online</h3>
-      <div class="social-icons">
-        <a href="https://github.com/kuehnbt" target="_blank" class="social-icon">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/benjamin-kuehn/" target="_blank" class="social-icon">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://twitter.com/kuehnbt" target="_blank" class="social-icon">
-          <i class="fab fa-twitter"></i>
-        </a>
       </div>
     </div>
   </section>
@@ -152,31 +104,84 @@
   padding: var(--space-3xl) 0;
 }
 
-.contact-grid {
+.contact-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-3xl);
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 auto var(--space-3xl);
+}
+
+/* Resume Section */
+.resume-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: var(--space-xl);
+}
+
+.resume-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.resume-section p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.resume-download {
+  text-align: center;
+}
+
+.btn-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--accent-blue);
+  color: white;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-base);
+}
+
+.btn-resume:hover {
+  background: var(--accent-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+}
+
+.resume-note {
+  margin-top: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
 }
 
 /* Contact Information */
-.contact-info h2 {
-  font-size: 2rem;
-  margin-bottom: var(--space-lg);
+.contact-info-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: var(--space-xl);
 }
 
-.contact-info p {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-xl);
-  line-height: 1.8;
+.contact-info-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
 }
 
 .contact-methods {
   display: grid;
   gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
 }
 
 .contact-method {
@@ -196,321 +201,114 @@
   font-size: 1rem;
   margin-bottom: var(--space-xs);
   color: var(--text-primary);
+  font-weight: 600;
 }
 
 .contact-method a {
   color: var(--text-secondary);
   text-decoration: none;
   transition: var(--transition-base);
+  font-size: 0.95rem;
 }
 
 .contact-method a:hover {
   color: var(--accent-blue);
 }
 
-.availability-status {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: 50px;
-}
-
-.status-indicator {
-  width: 10px;
-  height: 10px;
-  background: var(--accent-green);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-/* Contact Form */
-.contact-form-section {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: var(--space-xl);
-}
-
-.contact-form-section h2 {
-  font-size: 2rem;
-  margin-bottom: var(--space-lg);
-}
-
-.contact-form {
-  display: grid;
-  gap: var(--space-lg);
-}
-
-.form-group {
-  display: grid;
-  gap: var(--space-sm);
-}
-
-.form-group label {
-  font-size: 0.875rem;
-  font-weight: 600;
+.contact-method span {
   color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.95rem;
 }
 
-.form-group input,
-.form-group textarea {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: var(--space-md);
-  color: var(--text-primary);
-  font-size: 1rem;
-  transition: all var(--transition-base);
-  font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.method-note {
+  font-size: 0.75rem;
   color: var(--text-tertiary);
+  margin-top: var(--space-xs);
 }
 
-.btn-submit {
-  background: var(--accent-blue);
-  color: white;
-  border: none;
-  padding: var(--space-md) var(--space-xl);
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-base);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.btn-submit:hover {
-  background: var(--accent-purple);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
-}
-
-.form-note {
-  font-size: 0.875rem;
-  color: var(--text-tertiary);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin: 0;
-}
-
-/* CTA Section */
-.contact-cta {
-  padding: var(--space-3xl) 0;
-  background: var(--bg-secondary);
+/* Quick Links */
+.quick-links {
+  max-width: 1000px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.cta-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: var(--space-md);
-}
-
-.cta-content p {
-  font-size: 1.25rem;
+.quick-links h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xl);
   color: var(--text-secondary);
-  max-width: 700px;
-  margin: 0 auto var(--space-xl);
-  line-height: 1.8;
 }
 
-.cta-buttons {
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+}
+
+.quick-link {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--space-xl) var(--space-lg);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all var(--transition-base);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-md);
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
-.btn-secondary {
-  background: transparent;
-  border: 2px solid var(--text-primary);
+.quick-link i {
+  font-size: 2rem;
+  color: var(--accent-blue);
 }
 
-.btn-secondary:hover {
-  background: var(--text-primary);
-  color: var(--bg-primary);
+.quick-link span {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.quick-link:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 10px 30px rgba(74, 158, 255, 0.1);
 }
 
 /* Animations */
-.contact-info {
+.resume-section {
   opacity: 0;
   animation: slideInFromLeft 0.8s ease-out forwards;
 }
 
-.contact-form-section {
+.contact-info-section {
   opacity: 0;
   animation: slideInFromRight 0.8s ease-out 0.2s forwards;
 }
 
-/* Form status messages */
-.form-status {
-  margin-top: var(--space-md);
-}
-
-.form-success,
-.form-error {
-  padding: var(--space-sm) var(--space-md);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
-}
-
-.form-success {
-  background: rgba(74, 222, 128, 0.1);
-  border: 1px solid var(--accent-green);
-  color: var(--accent-green);
-}
-
-.form-error {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid #ef4444;
-  color: #ef4444;
-}
-
-.form-alternative {
-  text-align: center;
-  margin-top: var(--space-md);
-  color: var(--text-tertiary);
-  font-size: 0.75rem;
-}
-
-/* Button loading state */
-.btn-submit.loading {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.btn-submit.loading i {
-  animation: spin 1s linear infinite;
+.quick-links {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.4s forwards;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .contact-grid {
+  .contact-main {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
   }
   
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
+  .link-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .btn-pill {
-    width: 100%;
-    max-width: 300px;
+}
+
+@media (max-width: 480px) {
+  .link-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
-
-<script>
-// Contact form handling
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const btnText = submitBtn.querySelector('.btn-text');
-  const successMsg = document.querySelector('.form-success');
-  const errorMsg = document.querySelector('.form-error');
-  const formNote = document.querySelector('.form-note');
-  
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Validate form
-      const formData = new FormData(form);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const message = formData.get('message');
-      
-      if (!name || !email || !message) {
-        showError();
-        return;
-      }
-      
-      // Show loading state
-      submitBtn.classList.add('loading');
-      submitBtn.disabled = true;
-      btnText.textContent = 'Sending...';
-      
-      try {
-        // If using Formspree or similar service
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          showSuccess();
-          form.reset();
-        } else {
-          showError();
-        }
-      } catch (error) {
-        showError();
-      } finally {
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        btnText.textContent = 'Send Message';
-      }
-    });
-  }
-  
-  function showSuccess() {
-    formNote.style.display = 'none';
-    errorMsg.style.display = 'none';
-    successMsg.style.display = 'flex';
-    successMsg.classList.add('fade-in');
-  }
-  
-  function showError() {
-    formNote.style.display = 'none';
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'flex';
-    errorMsg.classList.add('fade-in');
-    form.classList.add('shake');
-    
-    setTimeout(() => {
-      form.classList.remove('shake');
-    }, 500);
-  }
-  
-  // Add input validation feedback
-  const inputs = form.querySelectorAll('input, textarea');
-  inputs.forEach(input => {
-    input.addEventListener('blur', () => {
-      if (!input.validity.valid) {
-        input.classList.add('error');
-      } else {
-        input.classList.remove('error');
-      }
-    });
-  });
-});
-</script>
 {{ end }}
