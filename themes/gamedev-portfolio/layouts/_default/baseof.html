@@ -51,15 +51,10 @@
                 <li><a href="{{ .Site.BaseURL }}" {{ if .IsHome }}class="active"{{ end }}>HOME</a></li>
                 <li><a href="{{ .Site.BaseURL }}about/" {{ if eq .RelPermalink "/portfolio-site/about/" }}class="active"{{ end }}>ABOUT</a></li>
                 <li><a href="{{ .Site.BaseURL }}projects/" {{ if or (eq .RelPermalink "/portfolio-site/projects/") (eq .Section "projects") }}class="active"{{ end }}>PROJECTS</a></li>
+                <li><a href="{{ .Site.BaseURL }}skills/" {{ if eq .RelPermalink "/portfolio-site/skills/" }}class="active"{{ end }}>SKILLS</a></li>
                 <li><a href="{{ .Site.BaseURL }}blog/" {{ if or (eq .RelPermalink "/portfolio-site/blog/") (eq .Section "blog") }}class="active"{{ end }}>BLOG</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">MORE <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 0.3em;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="{{ .Site.BaseURL }}skills/">SKILLS</a>
-                        <a href="{{ .Site.BaseURL }}learning/">LEARNING</a>
-                        <a href="{{ .Site.BaseURL }}contact/">CONTACT</a>
-                    </div>
-                </li>
+                <li><a href="{{ .Site.BaseURL }}learning/" {{ if eq .RelPermalink "/portfolio-site/learning/" }}class="active"{{ end }}>LEARNING</a></li>
+                <li><a href="{{ .Site.BaseURL }}contact/" {{ if eq .RelPermalink "/portfolio-site/contact/" }}class="active"{{ end }}>CONTACT</a></li>
             </ul>
         </nav>
     </header>

@@ -108,23 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
     grid.classList.add('stagger-animation');
   });
 
-  // Dropdown menu toggle
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdown = document.querySelector('.dropdown');
-  
-  if (dropdownToggle && dropdown) {
-    dropdownToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      dropdown.classList.toggle('active');
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-  }
 
   // Add active class to current navigation item
   const currentPath = window.location.pathname;

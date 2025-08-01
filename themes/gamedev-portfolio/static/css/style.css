@@ -157,72 +157,6 @@ nav a.active::after {
   width: 100%;
 }
 
-/* Dropdown Menu */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background: var(--bg-secondary);
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-  z-index: 1001;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  margin-top: var(--space-sm);
-  padding: var(--space-xs) 0;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all var(--transition-base);
-}
-
-.dropdown:hover .dropdown-content,
-.dropdown.active .dropdown-content {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* Keep dropdown visible when hovering over it */
-.dropdown-content:hover {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dropdown-content a {
-  display: block;
-  padding: var(--space-sm) var(--space-md);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: var(--transition-base);
-}
-
-.dropdown-content a:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-/* Dropdown toggle styling */
-.dropdown-toggle {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.3em;
-}
-
-.dropdown-toggle i {
-  transition: transform var(--transition-base);
-}
-
-.dropdown:hover .dropdown-toggle i,
-.dropdown.active .dropdown-toggle i {
-  transform: rotate(180deg);
-}
 
 /* Main Content */
 main {
@@ -935,6 +869,12 @@ a:hover::before, button:hover::before {
   .project-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
+  
+  /* Adjust navigation for medium screens */
+  nav ul {
+    gap: var(--space-md);
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -944,21 +884,18 @@ a:hover::before, button:hover::before {
   }
   
   nav ul {
-    gap: var(--space-sm);
-    font-size: 0.75rem;
+    gap: var(--space-xs);
+    font-size: 0.7rem;
+  }
+  
+  nav a {
+    padding: var(--space-xs);
   }
   
   .logo {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
-  /* Show dropdown on mobile but adjust positioning */
-  .dropdown .dropdown-content {
-    position: fixed;
-    right: var(--space-md);
-    top: 60px;
-    min-width: 140px;
-  }
   
   /* Hero Section */
   .hero-container {
