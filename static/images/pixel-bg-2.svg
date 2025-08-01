@@ -1,0 +1,15 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pixelPattern2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect x="5" y="5" width="8" height="8" fill="#2a2a2a"/>
+      <rect x="25" y="15" width="8" height="8" fill="#3a3a3a"/>
+      <rect x="15" y="25" width="8" height="8" fill="#2a2a2a"/>
+      <circle cx="20" cy="20" r="3" fill="#4a4a4a" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#pixelPattern2)"/>
+  <!-- Geometric pixel shapes -->
+  <polygon points="150,50 170,90 130,90" fill="#4a4a4a" opacity="0.4"/>
+  <rect x="250" y="150" width="30" height="30" fill="#3a3a3a" opacity="0.5" transform="rotate(45 265 165)"/>
+  <polygon points="350,250 380,280 350,310 320,280" fill="#5a5a5a" opacity="0.3"/>
+</svg>

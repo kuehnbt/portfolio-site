@@ -1,0 +1,17 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pixelPattern1" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="10" height="10" fill="#1a1a1a"/>
+      <rect x="20" y="20" width="10" height="10" fill="#2a2a2a"/>
+      <rect x="40" y="0" width="10" height="10" fill="#1a1a1a"/>
+      <rect x="0" y="40" width="10" height="10" fill="#2a2a2a"/>
+      <rect x="30" y="30" width="5" height="5" fill="#3a3a3a"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#pixelPattern1)"/>
+  <!-- Add some scattered pixel elements -->
+  <rect x="100" y="100" width="20" height="20" fill="#4a4a4a" opacity="0.5"/>
+  <rect x="300" y="200" width="15" height="15" fill="#3a3a3a" opacity="0.5"/>
+  <rect x="400" y="350" width="25" height="25" fill="#4a4a4a" opacity="0.3"/>
+  <rect x="50" y="400" width="10" height="10" fill="#5a5a5a" opacity="0.4"/>
+</svg>

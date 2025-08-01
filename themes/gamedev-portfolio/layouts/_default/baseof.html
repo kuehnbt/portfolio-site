@@ -32,20 +32,20 @@
     <!-- Header - Always visible like Amy's -->
     <header>
         <nav>
-            <a href="/" class="logo">{{ .Site.Params.author }}</a>
+            <a href="{{ "/" | relURL }}" class="logo">{{ .Site.Params.author }}</a>
             <ul>
-                <li><a href="/" {{ if .IsHome }}class="active"{{ end }}>HOME</a></li>
-                <li><a href="/highlights/" {{ if eq .RelPermalink "/highlights/" }}class="active"{{ end }}>HIGHLIGHTS</a></li>
-                <li><a href="/about/" {{ if eq .RelPermalink "/about/" }}class="active"{{ end }}>ABOUT</a></li>
-                <li><a href="/games/" {{ if eq .RelPermalink "/games/" }}class="active"{{ end }}>GAMES</a></li>
-                <li><a href="/projects/" {{ if or (eq .RelPermalink "/projects/") (eq .Section "projects") }}class="active"{{ end }}>PROJECTS</a></li>
-                <li><a href="/blog/" {{ if or (eq .RelPermalink "/blog/") (eq .Section "blog") }}class="active"{{ end }}>BLOG</a></li>
+                <li><a href="{{ "/" | relURL }}" {{ if .IsHome }}class="active"{{ end }}>HOME</a></li>
+                <li><a href="{{ "/highlights/" | relURL }}" {{ if eq .RelPermalink "/portfolio-site/highlights/" }}class="active"{{ end }}>HIGHLIGHTS</a></li>
+                <li><a href="{{ "/about/" | relURL }}" {{ if eq .RelPermalink "/portfolio-site/about/" }}class="active"{{ end }}>ABOUT</a></li>
+                <li><a href="{{ "/games/" | relURL }}" {{ if eq .RelPermalink "/portfolio-site/games/" }}class="active"{{ end }}>GAMES</a></li>
+                <li><a href="{{ "/projects/" | relURL }}" {{ if or (eq .RelPermalink "/portfolio-site/projects/") (eq .Section "projects") }}class="active"{{ end }}>PROJECTS</a></li>
+                <li><a href="{{ "/blog/" | relURL }}" {{ if or (eq .RelPermalink "/portfolio-site/blog/") (eq .Section "blog") }}class="active"{{ end }}>BLOG</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">MORE <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 0.3em;"></i></a>
                     <div class="dropdown-content">
-                        <a href="/skills/">SKILLS</a>
-                        <a href="/learning/">LEARNING</a>
-                        <a href="/contact/">CONTACT</a>
+                        <a href="{{ "/skills/" | relURL }}">SKILLS</a>
+                        <a href="{{ "/learning/" | relURL }}">LEARNING</a>
+                        <a href="{{ "/contact/" | relURL }}">CONTACT</a>
                     </div>
                 </li>
             </ul>

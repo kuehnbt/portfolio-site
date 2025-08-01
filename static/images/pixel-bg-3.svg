@@ -1,0 +1,27 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pixelPattern3" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect x="10" y="10" width="6" height="6" fill="#3a3a3a"/>
+      <rect x="30" y="30" width="6" height="6" fill="#4a4a4a"/>
+      <rect x="50" y="10" width="6" height="6" fill="#3a3a3a"/>
+      <rect x="10" y="50" width="6" height="6" fill="#4a4a4a"/>
+      <!-- Small accent pixels -->
+      <rect x="25" y="15" width="2" height="2" fill="#5a5a5a"/>
+      <rect x="45" y="35" width="2" height="2" fill="#5a5a5a"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#pixelPattern3)"/>
+  <!-- Larger pixel elements for foreground -->
+  <rect x="120" y="80" width="40" height="10" fill="#4a4a4a" opacity="0.6"/>
+  <rect x="200" y="200" width="10" height="40" fill="#5a5a5a" opacity="0.5"/>
+  <rect x="320" y="150" width="20" height="20" fill="#4a4a4a" opacity="0.4"/>
+  <rect x="380" y="300" width="15" height="15" fill="#6a6a6a" opacity="0.3"/>
+  <!-- Pixel grid overlay -->
+  <g opacity="0.2">
+    <rect x="50" y="250" width="5" height="5" fill="#7a7a7a"/>
+    <rect x="60" y="250" width="5" height="5" fill="#7a7a7a"/>
+    <rect x="70" y="250" width="5" height="5" fill="#7a7a7a"/>
+    <rect x="50" y="260" width="5" height="5" fill="#7a7a7a"/>
+    <rect x="70" y="260" width="5" height="5" fill="#7a7a7a"/>
+  </g>
+</svg>

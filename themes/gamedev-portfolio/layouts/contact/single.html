@@ -1,0 +1,368 @@
+{{ define "main" }}
+<div class="contact-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>LET'S CONNECT</h1>
+    <p>Interested in discussing game infrastructure, DevOps, or potential opportunities? I'd love to hear from you!</p>
+  </div>
+
+  <!-- Contact Content -->
+  <section class="contact-content">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          <p>I'm actively seeking opportunities in game development where I can leverage my infrastructure expertise to build scalable, reliable gaming experiences.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h3>Email</h3>
+                <a href="mailto:kuehnbt@gmail.com">kuehnbt@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <i class="fab fa-linkedin"></i>
+              <div>
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/benjamin-kuehn/" target="_blank">linkedin.com/in/benjamin-kuehn</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <i class="fab fa-github"></i>
+              <div>
+                <h3>GitHub</h3>
+                <a href="https://github.com/kuehnbt" target="_blank">github.com/kuehnbt</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h3>Location</h3>
+                <span>Available for remote or relocation</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="availability-status">
+            <div class="status-indicator"></div>
+            <span>Currently available for new opportunities</span>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <h2>Send a Message</h2>
+          <form class="contact-form" action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project or opportunity..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+            
+            <p class="form-note">
+              <i class="fas fa-info-circle"></i>
+              I typically respond within 24-48 hours
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="contact-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Looking for a Technical Game Developer?</h2>
+        <p>I bring enterprise-grade infrastructure expertise to game development, ensuring your games scale seamlessly from prototype to millions of players.</p>
+        <div class="cta-buttons">
+          <a href="{{ "/projects/" | relURL }}" class="btn-pill">View My Work</a>
+          <a href="{{ "/about/" | relURL }}" class="btn-pill btn-secondary">Learn More About Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Links -->
+  <section class="social-section">
+    <div class="container">
+      <h3>Find Me Online</h3>
+      <div class="social-icons">
+        <a href="https://github.com/kuehnbt" target="_blank" class="social-icon">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/benjamin-kuehn/" target="_blank" class="social-icon">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/kuehnbt" target="_blank" class="social-icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Contact Page Specific Styles */
+.contact-container {
+  min-height: 100vh;
+}
+
+.contact-content {
+  padding: var(--space-3xl) 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contact Information */
+.contact-info h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-lg);
+}
+
+.contact-info p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.8;
+}
+
+.contact-methods {
+  display: grid;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.contact-method {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.contact-method i {
+  font-size: 1.5rem;
+  color: var(--accent-blue);
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.contact-method h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-xs);
+  color: var(--text-primary);
+}
+
+.contact-method a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.contact-method a:hover {
+  color: var(--accent-blue);
+}
+
+.availability-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 50px;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Contact Form */
+.contact-form-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: var(--space-xl);
+}
+
+.contact-form-section h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-lg);
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.form-group {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-md);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all var(--transition-base);
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+.btn-submit {
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-submit:hover {
+  background: var(--accent-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+}
+
+.form-note {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+}
+
+/* CTA Section */
+.contact-cta {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.cta-content p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.8;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Animations */
+.contact-info {
+  opacity: 0;
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.contact-form-section {
+  opacity: 0;
+  animation: slideInFromRight 0.8s ease-out 0.2s forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-pill {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+</style>
+{{ end }}
