@@ -174,10 +174,24 @@ nav a.active::after {
   border-radius: 4px;
   margin-top: var(--space-sm);
   padding: var(--space-xs) 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all var(--transition-base);
 }
 
+.dropdown:hover .dropdown-content,
 .dropdown.active .dropdown-content {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Keep dropdown visible when hovering over it */
+.dropdown-content:hover {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dropdown-content a {
@@ -191,6 +205,23 @@ nav a.active::after {
 .dropdown-content a:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
+}
+
+/* Dropdown toggle styling */
+.dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.dropdown-toggle i {
+  transition: transform var(--transition-base);
+}
+
+.dropdown:hover .dropdown-toggle i,
+.dropdown.active .dropdown-toggle i {
+  transform: rotate(180deg);
 }
 
 /* Main Content */
@@ -921,9 +952,12 @@ a:hover::before, button:hover::before {
     font-size: 1rem;
   }
   
-  /* Hide dropdown on mobile - show as burger menu */
-  .dropdown {
-    display: none;
+  /* Show dropdown on mobile but adjust positioning */
+  .dropdown .dropdown-content {
+    position: fixed;
+    right: var(--space-md);
+    top: 60px;
+    min-width: 140px;
   }
   
   /* Hero Section */
